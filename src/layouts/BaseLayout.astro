@@ -33,7 +33,7 @@ const website = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="theme-color" content="#1e3a5f" />
+    <meta name="theme-color" content="#17344d" />
     {noindex && <meta name="robots" content="noindex" />}
     {
       site.googleSiteVerification ? (
@@ -65,7 +65,7 @@ const website = {
       ) : null
     }
   </head>
-  <body>
+  <body class="site-essential">
     <Header />
     <main id="content">
       <slot />

@@ -1,5 +1,4 @@
 ---
-import CourseCard from "../components/CourseCard.astro";
 import ResponsiveImage from "../components/ResponsiveImage.astro";
 import { courses } from "../content/courses";
 import { testimonials } from "../content/testimonials";
@@ -15,65 +14,51 @@ const image = site.heroImage;
   description="Demonstration of a Webco Essential website: practical lorry training from one base, with sample courses and a simple way to enquire."
 >
   <section class="hero">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow">HGV and driver training · {site.location.town}</p>
-        <h1>Practical lorry training from one local base</h1>
-        <p class="lede">
-          Category C+E, Category C, C1 and Driver CPC. Straightforward advice and time in the vehicle,
-          with a simple way to enquire.
+    <div class="wrap">
+      {
+        image.src ? (
+          <div class="hero-photo">
+            <ResponsiveImage
+              src={image.src}
+              webp={image.webp}
+              avif={image.avif}
+              alt={image.alt}
+              width={image.width}
+              height={image.height}
+            />
+          </div>
+        ) : null
+      }
+      <p class="eyebrow">HGV and driver training · {site.location.town}</p>
+      <h1>Practical lorry training from one local base</h1>
+      <p class="lede">
+        Category C+E, Category C, C1 and Driver CPC. Straightforward advice and time in the vehicle,
+        with a simple way to enquire.
+      </p>
+      <div class="actions">
+        <a class="button" href="/contact/#enquiry">Enquire now</a>
+        <a class="button button-quiet" href={site.phoneHref}>Call us</a>
+      </div>
+      <p class="example-caption">
+        {site.location.town} and {site.phoneDisplay} are placeholders. This is not a real training business.
+      </p>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="location-heading">
+    <div class="wrap location-split">
+      <div class="section-head">
+        <h2 id="location-heading">One training base</h2>
+        <p class="section-intro">{site.location.summary}</p>
+      </div>
+      <div class="location-panel">
+        <p>
+          <strong>{site.location.town}, {site.location.county}</strong>
         </p>
+        <p class="example-caption">Placeholder location. Directions would be shared when someone enquires.</p>
         <div class="actions">
           <a class="button" href="/contact/#enquiry">Enquire now</a>
-          <a class="button button-quiet" href={site.phoneHref}>Call us</a>
-          <a class="button button-text" href="/training/">View training</a>
         </div>
-        <p class="example-caption">
-          {site.location.town} and {site.phoneDisplay} are placeholders. This is not a real training business.
-        </p>
-        <svg class="hero-vehicle" viewBox="0 0 228 72" aria-hidden="true">
-          <rect x="6" y="18" width="96" height="30" rx="2" fill="none" stroke="currentColor" stroke-width="2.5"></rect>
-          <path d="M102 30h34l22 18v8H102V30z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"></path>
-          <path d="M136 30v18" stroke="currentColor" stroke-width="2.5"></path>
-          <circle cx="38" cy="54" r="8" fill="#17324d" stroke="#e0b15a" stroke-width="2.5"></circle>
-          <circle cx="72" cy="54" r="8" fill="#17324d" stroke="#e0b15a" stroke-width="2.5"></circle>
-          <circle cx="132" cy="54" r="8" fill="#17324d" stroke="#e0b15a" stroke-width="2.5"></circle>
-          <circle cx="164" cy="54" r="8" fill="#17324d" stroke="#e0b15a" stroke-width="2.5"></circle>
-        </svg>
-      </div>
-      <div class="hero-side">
-        {
-          image.src ? (
-            <div class="hero-photo">
-              <ResponsiveImage
-                src={image.src}
-                webp={image.webp}
-                avif={image.avif}
-                alt={image.alt}
-                width={image.width}
-                height={image.height}
-              />
-            </div>
-          ) : null
-        }
-        <aside class="glance" aria-label="Training at a glance">
-          <h2>At this base</h2>
-          <ul class="glance-board">
-            {
-              courses.map((course, index) => (
-                <li>
-                  <a href={`/training/#${course.id}`}>
-                    <span class="glance-index" aria-hidden="true">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <span class="glance-title">{course.title}</span>
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-          <p class="glance-place">{site.location.town}, {site.location.county}</p>
-        </aside>
       </div>
     </div>
   </section>
@@ -87,9 +72,21 @@ const image = site.heroImage;
           confirmed when you enquire.
         </p>
       </div>
-      <ul class="cards">
-        {courses.map((course) => <CourseCard course={course} />)}
+      <ul class="group-list">
+        {
+          courses.map((course) => (
+            <li>
+              <a href={`/training/#${course.id}`}>
+                <span class="group-title">{course.title}</span>
+                <span class="group-summary">{course.summary}</span>
+              </a>
+            </li>
+          ))
+        }
       </ul>
+      <div class="actions">
+        <a class="button button-quiet" href="/training/">View training</a>
+      </div>
     </div>
   </section>
 
@@ -105,7 +102,6 @@ const image = site.heroImage;
         {
           trustPoints.map((point) => (
             <li>
-              <span class="trust-index" aria-hidden="true"></span>
               <h3>{point.title}</h3>
               <p>{point.text}</p>
             </li>
@@ -115,26 +111,7 @@ const image = site.heroImage;
     </div>
   </section>
 
-  <section class="block band" aria-labelledby="location-heading">
-    <div class="wrap location-split">
-      <div class="section-head">
-        <h2 id="location-heading">One training base</h2>
-        <p class="section-intro">{site.location.summary}</p>
-      </div>
-      <div class="location-panel">
-        <p>
-          <strong>{site.location.town}, {site.location.county}</strong>
-        </p>
-        <p class="example-caption">Placeholder location. Directions would be shared when someone enquires.</p>
-        <div class="actions">
-          <a class="button" href="/contact/#enquiry">Enquire now</a>
-          <a class="button button-quiet" href="/about/">About this training</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block" aria-labelledby="testimonials-heading">
+  <section class="block band" aria-labelledby="testimonials-heading">
     <div class="wrap">
       <div class="section-head">
         <h2 id="testimonials-heading">Sample testimonials</h2>
