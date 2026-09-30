@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://webco-essential.example/sitemap-index.xml
+Sitemap: https://webco-essential.co.uk/sitemap-index.xml

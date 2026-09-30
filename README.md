@@ -11,7 +11,7 @@ Demonstration site for the Webco Essential website package. Static Astro site fo
 
 The phone, email and town in this repository are placeholders. Do not add a street address, accreditation, or a real testimonial unless it belongs to the client.
 
-Replace `site.url` with the live domain before publishing. Canonical links and the sitemap are generated from that value.
+The live domain is `https://webco-essential.co.uk`, set as `site.url`. Canonical links and the sitemap are generated from that value.
 
 Optional client photos go in `public/images/`. Point `site.heroImage` at the file. Leave `src` empty to show no photo. WebP and AVIF paths are optional.
 

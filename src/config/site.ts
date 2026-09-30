@@ -7,11 +7,10 @@
  * accreditation, testimonial or company name.
  *
  * `url` is baked into canonical links and the sitemap at build time.
- * Change it to the live domain before the site is published on that domain.
  */
 export const site = {
   name: "Webco Essential",
-  url: "https://webco-essential.example",
+  url: "https://webco-essential.co.uk",
   description:
     "Demonstration of a Webco Essential website for a small HGV training provider, with sample courses, one training base and a simple enquiry path.",
   demoLine: "Demonstration website by Webco Media",
