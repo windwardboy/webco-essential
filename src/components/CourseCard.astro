@@ -1,0 +1,16 @@
+---
+import type { Course } from "../content/courses";
+
+interface Props {
+  course: Course;
+}
+
+const { course } = Astro.props;
+---
+
+<li class="card">
+  <p class="card-kicker">{course.licence}</p>
+  <h3><a href={`/training/#${course.id}`}>{course.title}</a></h3>
+  <p>{course.summary}</p>
+  <a class="text-link" href={`/contact/?course=${course.id}#enquiry`}>Enquire about this course</a>
+</li>

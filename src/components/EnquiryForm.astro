@@ -1,0 +1,101 @@
+---
+import { courses } from "../content/courses";
+import { site } from "../config/site";
+import { enquiryAction } from "../lib/links";
+
+const action = enquiryAction(site.enquiryEndpoint);
+const demo = action === null;
+---
+
+<form
+  id="enquiry-form"
+  class="enquiry-form"
+  data-enquiry-form
+  data-demo={demo ? "true" : "false"}
+  method={demo ? "dialog" : "post"}
+  action={action ?? undefined}
+>
+  <div class="field">
+    <label for="enquiry-name">Name <span class="req">Required</span></label>
+    <input id="enquiry-name" name="name" type="text" autocomplete="name" required />
+  </div>
+  <div class="field-row">
+    <div class="field">
+      <label for="enquiry-phone">Phone <span class="req">Optional</span></label>
+      <input id="enquiry-phone" name="phone" type="tel" autocomplete="tel" />
+    </div>
+    <div class="field">
+      <label for="enquiry-email">Email <span class="req">Required</span></label>
+      <input id="enquiry-email" name="email" type="email" autocomplete="email" required />
+    </div>
+  </div>
+  <div class="field">
+    <label for="enquiry-course">Course <span class="req">Required</span></label>
+    <select id="enquiry-course" name="course" required>
+      <option value="" selected disabled>Choose a course</option>
+      {courses.map((course) => <option value={course.id}>{course.title}</option>)}
+      <option value="not-sure">Not sure yet</option>
+    </select>
+  </div>
+  <fieldset class="contact-method">
+    <legend>Preferred contact method <span class="req">Required</span></legend>
+    <label class="choice">
+      <input type="radio" name="contact_method" value="phone" required />
+      Phone
+    </label>
+    <label class="choice">
+      <input type="radio" name="contact_method" value="email" />
+      Email
+    </label>
+    {
+      site.showWhatsApp ? (
+        <label class="choice">
+          <input type="radio" name="contact_method" value="whatsapp" />
+          WhatsApp
+        </label>
+      ) : null
+    }
+  </fieldset>
+  <div class="field">
+    <label for="enquiry-message">Message <span class="req">Required</span></label>
+    <textarea id="enquiry-message" name="message" required></textarea>
+  </div>
+  {
+    demo ? (
+      <p class="form-note">This demonstration form does not send messages. Nothing you type is stored.</p>
+    ) : null
+  }
+  <p class="form-result" data-enquiry-result hidden tabindex="-1">
+    This is a demonstration. Your enquiry was not sent.
+  </p>
+  <div class="form-actions">
+    <button class="button" type="submit">Send enquiry</button>
+  </div>
+</form>
+
+<script>
+  document.querySelectorAll("[data-enquiry-form]").forEach((node) => {
+    if (!(node instanceof HTMLFormElement)) return;
+    const form = node;
+    const params = new URLSearchParams(location.search);
+    const course = params.get("course");
+    const select = form.querySelector("select[name='course']");
+    if (course && select instanceof HTMLSelectElement && [...select.options].some((option) => option.value === course)) {
+      select.value = course;
+    }
+
+    form.addEventListener("submit", (event) => {
+      if (form.dataset.demo !== "true") return;
+      event.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      const result = form.querySelector("[data-enquiry-result]");
+      if (result instanceof HTMLElement) {
+        result.hidden = false;
+        result.focus();
+      }
+    });
+  });
+</script>

@@ -1,0 +1,61 @@
+---
+import { nav, site } from "../config/site";
+
+const serviceLinks = nav.filter((item) => item.href !== "/");
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-brand">{site.name}</p>
+      <p>{site.demoLine}. Sample content for a single-location HGV training website.</p>
+      {
+        site.webcoMediaUrl ? (
+          <p>
+            <a href={site.webcoMediaUrl}>Webco Media</a>
+          </p>
+        ) : (
+          <p>Webco Media</p>
+        )
+      }
+    </div>
+    <div>
+      <p class="footer-label">Pages</p>
+      <ul class="footer-nav">
+        {
+          serviceLinks.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div>
+      <p class="footer-label">Example contact</p>
+      <ul class="footer-nav">
+        <li>
+          <a href={site.phoneHref}>{site.phoneDisplay}</a>
+          <span class="example-tag">Example number</span>
+        </li>
+        <li>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+          <span class="example-tag">Example address</span>
+        </li>
+        {
+          site.showWhatsApp ? (
+            <li>
+              <a href={site.whatsappHref} rel="noopener noreferrer">
+                WhatsApp
+              </a>
+              <span class="example-tag">Example number</span>
+            </li>
+          ) : null
+        }
+        <li>
+          <a href="/contact/#enquiry">Enquiry form</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>

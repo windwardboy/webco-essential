@@ -1,0 +1,40 @@
+---
+import PageHero from "../components/PageHero.astro";
+import { aboutSections } from "../content/about";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="About"
+  description="Example about page for an independent HGV instructor, with sample background and space left clear for real accreditation."
+>
+  <PageHero
+    title="About this training"
+    lede="How a small provider can introduce themselves. Every paragraph below is example copy for the demonstration."
+  />
+  <div class="block block-follow">
+    <div class="wrap measure">
+      {
+        aboutSections.map((section) => (
+          <section class="about-section" aria-labelledby={section.id}>
+            <h2 id={section.id}>{section.heading}</h2>
+            {section.paragraphs.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </section>
+        ))
+      }
+      <section class="panel" aria-labelledby="accreditation">
+        <h2 id="accreditation">Accreditation</h2>
+        <p>
+          Logos and approval statements belong here only when they are true for that provider. This
+          demonstration does not show DVSA, JAUPT or any other accreditation.
+        </p>
+      </section>
+      <div class="actions">
+        <a class="button" href="/training/">View training</a>
+        <a class="button button-quiet" href="/contact/#enquiry">Enquire now</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

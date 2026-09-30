@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://webco-essential.example/sitemap-index.xml

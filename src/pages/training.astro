@@ -1,0 +1,48 @@
+---
+import PageHero from "../components/PageHero.astro";
+import { courses } from "../content/courses";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Training"
+  description="Sample Category C+E, Category C, C1 and Driver CPC outlines for a single-location HGV training provider."
+>
+  <PageHero
+    title="Training"
+    lede="Sample outlines for a provider with a small set of courses. This is not a catalogue, and it does not list approved courses, durations or fees."
+  />
+  <div class="block block-follow">
+    <div class="wrap">
+      <nav aria-label="Courses on this page">
+        <ul class="course-jump">
+          {courses.map((course) => (
+            <li><a href={`#${course.id}`}>{course.title}</a></li>
+          ))}
+        </ul>
+      </nav>
+      {
+        courses.map((course) => (
+          <article class="course" id={course.id} aria-labelledby={`${course.id}-heading`}>
+            <h2 id={`${course.id}-heading`}>{course.title}</h2>
+            <p class="licence">{course.licence}</p>
+            <p class="measure">{course.summary}</p>
+            <h3>Who it is for</h3>
+            <p class="measure">{course.audience}</p>
+            <h3>What training includes</h3>
+            <ul>
+              {course.includes.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+            <div class="actions">
+              <a class="button" href={`/contact/?course=${course.id}#enquiry`}>
+                Enquire about {course.title}
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>

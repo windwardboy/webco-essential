@@ -1,0 +1,17 @@
+---
+import { nav } from "../config/site";
+import { isCurrentPath } from "../lib/links";
+---
+
+<ul class="nav">
+  {
+    nav.map((item) => (
+      <li>
+        <a href={item.href} aria-current={isCurrentPath(Astro.url.pathname, item.href) ? "page" : undefined}>
+          {item.label}
+        </a>
+      </li>
+    ))
+  }
+  <li><a class="button" href="/contact/#enquiry">Enquire now</a></li>
+</ul>

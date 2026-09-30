@@ -1,0 +1,23 @@
+---
+interface Props {
+  src: string;
+  webp?: string;
+  avif?: string;
+  alt: string;
+  width: number;
+  height: number;
+  sizes?: string;
+}
+
+const { src, webp = "", avif = "", alt, width, height, sizes = "(min-width: 56rem) 38vw, 100vw" } = Astro.props;
+---
+
+{
+  src ? (
+    <picture>
+      {avif ? <source type="image/avif" srcset={avif} /> : null}
+      {webp ? <source type="image/webp" srcset={webp} /> : null}
+      <img src={src} alt={alt} width={width} height={height} sizes={sizes} decoding="async" />
+    </picture>
+  ) : null
+}
