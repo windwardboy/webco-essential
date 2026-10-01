@@ -1,7 +1,13 @@
 ---
-import { nav, site } from "../config/site";
+import { trainingLinks } from "../content/courses";
+import { site } from "../config/site";
 
-const serviceLinks = nav.filter((item) => item.href !== "/");
+const pageLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about/", label: "About" },
+  { href: "/reviews/", label: "Reviews" },
+  { href: "/contact/", label: "Contact" },
+];
 ---
 
 <footer class="site-footer">
@@ -9,6 +15,10 @@ const serviceLinks = nav.filter((item) => item.href !== "/");
     <div>
       <p class="footer-brand">{site.name}</p>
       <p>{site.demoLine}. Sample content for a single-location HGV training website.</p>
+      <p>
+        <strong>{site.location.town}, {site.location.county}</strong>
+      </p>
+      <p class="example-caption">Placeholder location. No street address is published.</p>
       {
         site.webcoMediaUrl ? (
           <p>
@@ -20,10 +30,22 @@ const serviceLinks = nav.filter((item) => item.href !== "/");
       }
     </div>
     <div>
+      <p class="footer-label">Training</p>
+      <ul class="footer-nav">
+        {
+          trainingLinks.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div>
       <p class="footer-label">Pages</p>
       <ul class="footer-nav">
         {
-          serviceLinks.map((item) => (
+          pageLinks.map((item) => (
             <li>
               <a href={item.href}>{item.label}</a>
             </li>

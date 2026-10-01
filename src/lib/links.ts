@@ -21,3 +21,15 @@ export function enquiryAction(endpoint: string): string | null {
 export function analyticsMeasurementId(id: string): string | null {
   return /^G-[A-Z0-9]+$/.test(id) ? id : null;
 }
+
+/** HTTPS URLs only, for optional map and review links supplied in config. */
+export function httpsUrl(value: string): string | null {
+  if (value.startsWith("https://")) return value;
+  return null;
+}
+
+export type Crumb = { label: string; href: string };
+
+export function pageCrumbs(items: readonly Crumb[]): Crumb[] {
+  return [{ label: "Home", href: "/" }, ...items];
+}

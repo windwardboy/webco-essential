@@ -2,16 +2,17 @@
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import { site } from "../config/site";
-import { analyticsMeasurementId, canonicalUrl } from "../lib/links";
+import { analyticsMeasurementId, canonicalUrl, type Crumb } from "../lib/links";
 import "../styles/global.css";
 
 interface Props {
   title: string;
   description: string;
   noindex?: boolean;
+  crumbs?: readonly Crumb[];
 }
 
-const { title, description, noindex = false } = Astro.props;
+const { title, description, noindex = false, crumbs = [] } = Astro.props;
 const pageTitle = title === site.name ? site.name : `${title} — ${site.name}`;
 const canonical = canonicalUrl(Astro.url.pathname);
 const analyticsId = analyticsMeasurementId(site.analyticsId);
@@ -22,6 +23,19 @@ const website = {
   url: site.url,
   description: site.description,
 };
+const breadcrumb =
+  crumbs.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: crumbs.map((crumb, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: crumb.label,
+          item: canonicalUrl(crumb.href),
+        })),
+      }
+    : null;
 ---
 
 <!doctype html>
@@ -33,7 +47,7 @@ const website = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="theme-color" content="#17344d" />
+    <meta name="theme-color" content="#121a21" />
     {noindex && <meta name="robots" content="noindex" />}
     {
       site.googleSiteVerification ? (
@@ -47,6 +61,7 @@ const website = {
     <meta property="og:site_name" content={site.name} />
     <meta property="og:locale" content="en_GB" />
     <script type="application/ld+json" set:html={JSON.stringify(website)} />
+    {breadcrumb ? <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} /> : null}
     {
       analyticsId ? (
         <script async src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`}></script>

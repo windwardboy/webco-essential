@@ -1,0 +1,82 @@
+---
+import CtaBand from "../components/CtaBand.astro";
+import PageHero from "../components/PageHero.astro";
+import Section from "../components/Section.astro";
+import TestimonialList from "../components/TestimonialList.astro";
+import { testimonials } from "../content/testimonials";
+import { site } from "../config/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { httpsUrl, pageCrumbs } from "../lib/links";
+
+const crumbs = pageCrumbs([{ label: "Reviews", href: "/reviews/" }]);
+const googleReviews = httpsUrl(site.googleReviewsUrl);
+---
+
+<BaseLayout
+  title="Reviews"
+  description="Sample review layout for a Webco Essential training website. No rating, review count or Google score is shown, because none is claimed."
+  crumbs={crumbs}
+>
+  <PageHero
+    crumbs={crumbs}
+    eyebrow="Reviews"
+    title="Reviews"
+    lede="Space for feedback a provider can stand behind. This demonstration does not show a rating, a review count or a Google score."
+  >
+    <div class="actions">
+      <a class="button" href="/contact/#enquiry">Enquire now</a>
+      <a class="button button-quiet" href="/hgv-training/">View HGV training</a>
+    </div>
+  </PageHero>
+
+  <Section
+    id="overview"
+    title="Proof overview"
+    intro="No score is shown, because none is claimed. On a live site this area can introduce real feedback without inventing a figure."
+    band={true}
+    narrow={true}
+  >
+    <p class="example-caption">Sample layout only. Not a review score.</p>
+  </Section>
+
+  <Section
+    id="testimonials"
+    title="Testimonials"
+    intro="Example wording. Each quotation is marked as a sample and does not refer to a real learner."
+  >
+    <TestimonialList items={testimonials} />
+  </Section>
+
+  <Section id="google" title="Google reviews" intro={site.googleReviewsNote} band={true}>
+    {
+      googleReviews ? (
+        <div class="actions">
+          <a class="button" href={googleReviews} rel="noopener noreferrer">
+            Read the Google reviews
+          </a>
+        </div>
+      ) : (
+        <div class="panel">
+          <h3>No Google profile is connected</h3>
+          <p>
+            Add a reviews link in the site configuration when the provider has a profile they want to share.
+            A rating is still not invented to fill the gap.
+          </p>
+        </div>
+      )
+    }
+  </Section>
+
+  <Section
+    id="stories"
+    title="Selected learner stories"
+    intro="Longer sample notes, using the same example learners as the quotations above. Not real stories."
+  >
+    <TestimonialList items={testimonials} detailed={true} stacked={true} />
+  </Section>
+
+  <CtaBand
+    title="Ask about training"
+    text="The reviews on this demonstration are samples. The enquiry is how a driver asks about a real course."
+  />
+</BaseLayout>

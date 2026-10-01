@@ -1,0 +1,25 @@
+---
+import { otherCourses } from "../content/courses";
+
+interface Props {
+  excludeId: string;
+}
+
+const { excludeId } = Astro.props;
+const items = otherCourses(excludeId);
+---
+
+<ul class="related-links">
+  <li>
+    <a href="/hgv-training/">HGV training overview</a>
+    <span>Compare Category C, Category C+E and Driver CPC</span>
+  </li>
+  {
+    items.map((course) => (
+      <li>
+        <a href={course.path}>{course.title}</a>
+        <span>{course.summary}</span>
+      </li>
+    ))
+  }
+</ul>

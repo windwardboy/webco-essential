@@ -1,0 +1,48 @@
+---
+import { site } from "../config/site";
+
+interface Props {
+  id?: string;
+  title?: string;
+  band?: boolean;
+}
+
+const { id = "location", title = "Training location", band = false } = Astro.props;
+---
+
+<section class:list={["block", band && "band"]} aria-labelledby={id}>
+  <div class="wrap location-split">
+    <div class="section-head">
+      <h2 id={id}>{title}</h2>
+      <p class="section-intro">{site.location.summary}</p>
+      <h3>Areas served</h3>
+      <ul class="area-list">
+        {site.location.areasServed.map((area) => <li>{area}</li>)}
+      </ul>
+      <p class="example-caption">{site.location.areasNote}</p>
+    </div>
+    <div class="location-panel">
+      <p>
+        <strong>{site.location.town}, {site.location.county}</strong>
+      </p>
+      {
+        site.location.addressLines.length > 0 ? (
+          <p>
+            {site.location.addressLines.map((line) => (
+              <>
+                {line}
+                <br />
+              </>
+            ))}
+          </p>
+        ) : (
+          <p class="example-caption">No street address is published on this demonstration.</p>
+        )
+      }
+      <div class="actions">
+        <a class="button" href="/contact/#enquiry">Enquire now</a>
+        <a class="button button-quiet" href="/contact/#address">Address and map</a>
+      </div>
+    </div>
+  </div>
+</section>

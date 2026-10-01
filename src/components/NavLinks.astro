@@ -1,17 +1,39 @@
 ---
 import { nav } from "../config/site";
 import { isCurrentPath } from "../lib/links";
+
+const pathname = Astro.url.pathname;
 ---
 
 <ul class="nav">
   {
-    nav.map((item) => (
-      <li>
-        <a href={item.href} aria-current={isCurrentPath(Astro.url.pathname, item.href) ? "page" : undefined}>
-          {item.label}
-        </a>
-      </li>
-    ))
+    nav.map((item) => {
+      const children = item.children ?? [];
+      const sectionCurrent = children.some((child) => isCurrentPath(pathname, child.href));
+      return (
+        <li class:list={[children.length > 0 && "nav-sub"]}>
+          <a
+            href={item.href}
+            aria-current={isCurrentPath(pathname, item.href) ? "page" : undefined}
+            aria-haspopup={children.length > 0 ? "true" : undefined}
+            class:list={[sectionCurrent && "is-section"]}
+          >
+            {item.label}
+          </a>
+          {children.length > 0 ? (
+            <ul class="submenu">
+              {children.map((child) => (
+                <li>
+                  <a href={child.href} aria-current={isCurrentPath(pathname, child.href) ? "page" : undefined}>
+                    {child.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </li>
+      );
+    })
   }
   <li><a class="button" href="/contact/#enquiry">Enquire now</a></li>
 </ul>

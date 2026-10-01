@@ -1,0 +1,130 @@
+---
+import CtaBand from "../components/CtaBand.astro";
+import FaqList from "../components/FaqList.astro";
+import LocationPanel from "../components/LocationPanel.astro";
+import PageHero from "../components/PageHero.astro";
+import ProcessSteps from "../components/ProcessSteps.astro";
+import Section from "../components/Section.astro";
+import { courses, licenceComparison, priceNote, whichLicence } from "../content/courses";
+import { faqs } from "../content/faqs";
+import { trainingJourney } from "../content/process";
+import { site } from "../config/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { pageCrumbs } from "../lib/links";
+
+const crumbs = pageCrumbs([{ label: "HGV training", href: "/hgv-training/" }]);
+---
+
+<BaseLayout
+  title="HGV training overview"
+  description={`Compare Category C, Category C+E and Driver CPC for a single-location provider in ${site.location.town}. No fees, durations or eligibility decisions are published on this demonstration.`}
+  crumbs={crumbs}
+>
+  <PageHero
+    crumbs={crumbs}
+    eyebrow={`HGV training · ${site.location.town}`}
+    title="HGV training"
+    lede="Category C, Category C+E and Driver CPC from one base. This page compares the routes. It does not confirm eligibility, a price or a course length."
+  >
+    <div class="actions">
+      <a class="button" href="/contact/#enquiry">Enquire now</a>
+      <a class="button button-quiet" href="/hgv-training/#which-licence">Which licence?</a>
+    </div>
+  </PageHero>
+
+  <Section
+    id="comparison"
+    title="Licence comparison"
+    intro="Three routes. Each has its own page, so this overview stays a comparison rather than a second copy of the course detail."
+    band={true}
+  >
+    <div class="table-scroll">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th scope="col">Route</th>
+            <th scope="col">What it covers</th>
+            <th scope="col">Usual starting point</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            licenceComparison.map((row) => (
+              <tr>
+                <th scope="row"><a href={row.path}>{row.label}</a></th>
+                <td>{row.covers}</td>
+                <td>{row.startingPoint}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </Section>
+
+  <Section
+    id="which-licence"
+    title="Which licence is right for me?"
+    intro="General guidance only. The provider checks the licence you hold when you enquire."
+    narrow={true}
+  >
+    <ul class="related-links">
+      {
+        whichLicence.map((item) => (
+          <li>
+            <a href={item.href}>{item.title}</a>
+            <span>{item.text}</span>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="actions">
+      <a class="button" href="/contact/?course=not-sure#enquiry">Ask which licence fits</a>
+    </div>
+  </Section>
+
+  <ProcessSteps
+    id="journey"
+    title="Typical training journey"
+    intro="The same sequence a driver can expect to talk through. No timetable is attached."
+    steps={trainingJourney}
+    band={true}
+  />
+
+  <Section
+    id="includes"
+    title="What training includes"
+    intro="Each course page sets out the practical work. In short, the core offer is:"
+  >
+    <ul class="related-links">
+      {
+        courses.map((course) => (
+          <li>
+            <a href={course.path}>{course.title}</a>
+            <span>{course.summary}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section
+    id="pricing"
+    title="Costs and pricing"
+    intro={priceNote}
+    band={true}
+    narrow={true}
+  >
+    <p>Choose a route, then ask for a quote for that training. There is no price list on this demonstration.</p>
+    <div class="actions">
+      <a class="button" href="/contact/#enquiry">Request a quote</a>
+    </div>
+  </Section>
+
+  <LocationPanel id="location" title="Training location" />
+  <FaqList id="faq" title="Questions" items={faqs.overview} band={true} />
+  <CtaBand
+    title="Talk through the right route"
+    text="Say which licence you are considering, or ask for a steer if you are not sure."
+  />
+</BaseLayout>

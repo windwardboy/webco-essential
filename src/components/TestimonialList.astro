@@ -1,0 +1,25 @@
+---
+import type { Testimonial } from "../content/testimonials";
+
+interface Props {
+  items: readonly Testimonial[];
+  detailed?: boolean;
+  stacked?: boolean;
+}
+
+const { items, detailed = false, stacked = false } = Astro.props;
+---
+
+<ul class:list={["quotes", stacked && "quotes-stack"]}>
+  {
+    items.map((item) => (
+      <li>
+        <p class="quote-flag">Sample</p>
+        <blockquote>
+          <p>{detailed ? item.detail : item.quote}</p>
+          <footer>{item.attribution}</footer>
+        </blockquote>
+      </li>
+    ))
+  }
+</ul>

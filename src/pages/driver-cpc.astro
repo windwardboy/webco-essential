@@ -1,0 +1,103 @@
+---
+import CtaBand from "../components/CtaBand.astro";
+import FaqList from "../components/FaqList.astro";
+import LocationPanel from "../components/LocationPanel.astro";
+import PageHero from "../components/PageHero.astro";
+import RelatedTraining from "../components/RelatedTraining.astro";
+import Section from "../components/Section.astro";
+import { driverCpc, priceNote } from "../content/courses";
+import { faqs } from "../content/faqs";
+import { site } from "../config/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { pageCrumbs } from "../lib/links";
+
+const crumbs = pageCrumbs([
+  { label: "HGV training", href: "/hgv-training/" },
+  { label: "Driver CPC", href: "/driver-cpc/" },
+]);
+---
+
+<BaseLayout
+  title="Driver CPC training"
+  description={`Driver CPC explained for a single-location provider in ${site.location.town}. Periodic training is the example offer. No course code, date, approval or fee is published.`}
+  crumbs={crumbs}
+>
+  <PageHero
+    crumbs={crumbs}
+    eyebrow={`Driver CPC · ${site.location.town}`}
+    title="Driver CPC"
+    lede="Periodic training for professional drivers, explained without a course code, a date or an approval number. Driver CPC is not a vehicle category."
+  >
+    <div class="actions">
+      <a class="button" href="/contact/?course=driver-cpc#enquiry">Enquire about Driver CPC</a>
+      <a class="button button-quiet" href={site.phoneHref}>Call {site.phoneDisplay}</a>
+    </div>
+  </PageHero>
+
+  <Section id="what" title="What Driver CPC is" intro={driverCpc.what} band={true} narrow={true}>
+    <p>
+      The vehicle entitlements are <a href="/category-c-training/">Category C</a> and
+      <a href="/category-ce-training/">Category C+E</a>.
+    </p>
+  </Section>
+
+  <Section id="who" title="Who needs it" intro={driverCpc.who} narrow={true} />
+
+  <Section
+    id="types"
+    title="Initial and periodic CPC"
+    intro="Two different stages. Only one of them is listed as an offered course below."
+    band={true}
+  >
+    <ul class="cards">
+      <li class="card">
+        <p class="card-kicker">Initial</p>
+        <h3>New professional drivers</h3>
+        <p>{driverCpc.initial}</p>
+      </li>
+      <li class="card">
+        <p class="card-kicker">Periodic</p>
+        <h3>Drivers who already hold a card</h3>
+        <p>{driverCpc.periodic}</p>
+      </li>
+    </ul>
+  </Section>
+
+  <Section id="offered" title="Courses offered" intro="What this demonstration actually lists. Nothing else is implied.">
+    <ul class="cards">
+      <li class="card">
+        <p class="card-kicker">Listed on this demonstration</p>
+        <h3>{driverCpc.offeredTitle}</h3>
+        <p>{driverCpc.offeredText}</p>
+      </li>
+      <li class="card">
+        <p class="card-kicker">Not listed as offered</p>
+        <h3>Initial Driver CPC</h3>
+        <p>{driverCpc.initialNotOffered}</p>
+      </li>
+    </ul>
+  </Section>
+
+  <Section id="format" title="Format and duration" intro={driverCpc.format} band={true} narrow={true} />
+
+  <Section id="price" title="Price and quotes" intro={priceNote} narrow={true}>
+    <div class="actions">
+      <a class="button" href="/contact/?course=driver-cpc#enquiry">Ask for a Driver CPC quote</a>
+    </div>
+  </Section>
+
+  <LocationPanel id="location" title="Training location" band={true} />
+  <FaqList id="faq" title="Questions" items={faqs["driver-cpc"]} />
+
+  <Section id="related" title="Other training" intro="Licence training, if Driver CPC is not the question." band={true}>
+    <RelatedTraining excludeId="driver-cpc" />
+  </Section>
+
+  <CtaBand
+    id="cta"
+    title="Enquire about Driver CPC"
+    text="Say whether you are asking about periodic training, and how you would like to be contacted."
+    primaryHref="/contact/?course=driver-cpc#enquiry"
+    primaryLabel="Enquire about Driver CPC"
+  />
+</BaseLayout>

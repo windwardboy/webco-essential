@@ -1,26 +1,40 @@
 ---
 import EnquiryForm from "../components/EnquiryForm.astro";
 import PageHero from "../components/PageHero.astro";
+import ProcessSteps from "../components/ProcessSteps.astro";
+import Section from "../components/Section.astro";
+import { afterEnquiry } from "../content/process";
 import { site } from "../config/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { httpsUrl, pageCrumbs } from "../lib/links";
+
+const crumbs = pageCrumbs([{ label: "Contact", href: "/contact/" }]);
+const mapUrl = httpsUrl(site.mapEmbedUrl);
 ---
 
 <BaseLayout
   title="Contact"
-  description="Example phone, email and enquiry form for a Webco Essential training website. Messages are not sent."
+  description={`Example phone, email and enquiry form for HGV training in ${site.location.town}. Messages are not sent, and no street address is published.`}
+  crumbs={crumbs}
 >
   <PageHero
+    crumbs={crumbs}
+    eyebrow="Contact"
     title="Contact"
     lede="Phone, email and a short enquiry form. The details on this page are placeholders, and the form does not send a message."
   />
-  <div class="block block-follow">
+
+  <div class="block band">
     <div class="wrap contact-layout">
+      <section aria-labelledby="enquiry">
+        <h2 id="enquiry">Enquiry</h2>
+        <p class="section-intro">Say which course you are asking about. Nothing you type on this demonstration is stored.</p>
+        <div class="enquiry-offset">
+          <EnquiryForm />
+        </div>
+      </section>
       <address class="contact-card">
-        <h2>Example contact details</h2>
-        <p>
-          <strong>{site.location.town}, {site.location.county}</strong>
-        </p>
-        <p class="example-caption">{site.location.summary}</p>
+        <h2>Phone and email</h2>
         <ul class="contact-list">
           <li>
             <a href={site.phoneHref}>{site.phoneDisplay}</a>
@@ -42,12 +56,76 @@ import BaseLayout from "../layouts/BaseLayout.astro";
           }
         </ul>
       </address>
-      <section aria-labelledby="enquiry">
-        <h2 id="enquiry">Enquiry form</h2>
-        <div class="enquiry-offset">
-          <EnquiryForm />
-        </div>
-      </section>
     </div>
   </div>
+
+  <Section id="address" title="Training address" intro={site.location.summary}>
+    <div class="place-grid">
+      <div>
+        <p class="address">
+          {site.location.town}, {site.location.county}
+        </p>
+        {
+          site.location.addressLines.length > 0 ? (
+            <p>
+              {site.location.addressLines.map((line) => (
+                <>
+                  {line}
+                  <br />
+                </>
+              ))}
+            </p>
+          ) : (
+            <p class="example-caption">No street address is published on this demonstration.</p>
+          )
+        }
+      </div>
+      {
+        mapUrl ? (
+          <iframe
+            class="map-frame"
+            title={`Map of the training base in ${site.location.town}`}
+            src={mapUrl}
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          />
+        ) : (
+          <div class="map-placeholder">
+            <p class="map-placeholder-title">Map</p>
+            <p>{site.location.mapNote}</p>
+          </div>
+        )
+      }
+    </div>
+  </Section>
+
+  <Section id="hours" title="Contact hours" intro={site.location.hoursNote} band={true}>
+    <dl class="hours">
+      {
+        site.location.hours.map((row) => (
+          <div>
+            <dt>{row.label}</dt>
+            <dd>
+              {row.value}
+              <span class="example-tag">Example</span>
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </Section>
+
+  <Section id="areas" title="Areas served" intro={site.location.areasNote}>
+    <ul class="area-list">
+      {site.location.areasServed.map((area) => <li>{area}</li>)}
+    </ul>
+  </Section>
+
+  <ProcessSteps
+    id="after"
+    title="What happens after an enquiry"
+    intro="A plain sequence. No response time is promised."
+    steps={afterEnquiry}
+    band={true}
+  />
 </BaseLayout>

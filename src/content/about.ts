@@ -4,35 +4,59 @@ export type AboutSection = {
   paragraphs: readonly string[];
 };
 
+export const aboutIntro = {
+  eyebrow: "About",
+  title: "Training from one local base",
+  lede: "How a small provider introduces the people, the vehicle and the area. Every paragraph on this page is example copy. It does not describe a real instructor or a real business.",
+};
+
 export const aboutSections: readonly AboutSection[] = [
   {
-    id: "background",
-    heading: "Example background",
+    id: "who",
+    heading: "Who we are",
     paragraphs: [
-      "The wording on this page is an example. It does not describe a real instructor or a real business.",
-      "On a live Essential site, this is where the provider introduces the vehicles they train in, the drivers they usually teach, and how to get in touch.",
+      "This is the introduction a small HGV training provider would write in their own words: what they teach, who they usually teach, and where the training runs from.",
+      "The demonstration keeps that space, and leaves the real introduction empty of invented history.",
     ],
   },
   {
-    id: "philosophy",
-    heading: "Training philosophy",
+    id: "team",
+    heading: "Instructor and team",
     paragraphs: [
-      "Keep the advice plain. Explain the licence, the training and the next step before anyone is asked to commit.",
-      "Time in the vehicle matters more than a long list of claims.",
+      "A live site names the instructor, or the small team, and says who does the training.",
+      "No person is named here.",
     ],
   },
   {
     id: "experience",
-    heading: "Experience",
+    heading: "Experience and qualifications",
     paragraphs: [
-      "A provider can describe their instruction in their own words here. This demonstration does not invent a career history, a pass rate, or a number of drivers trained.",
+      "This is where a provider can describe experience they can stand behind, in plain language.",
+      "No career history, pass rate, number of drivers, or qualification is shown, because none has been supplied. Logos and approval statements belong here only when they are true.",
+    ],
+  },
+  {
+    id: "approach",
+    heading: "Training approach",
+    paragraphs: [
+      "Explain the licence, the practical work and the next step before anyone is asked to commit.",
+      "Time in the vehicle matters more than a list of claims.",
+    ],
+  },
+  {
+    id: "vehicles",
+    heading: "Vehicles and facilities",
+    paragraphs: [
+      "A provider describes the lorry, the trailer and the yard they actually use.",
+      "This demonstration does not name a make, a model, a yard or a facility.",
     ],
   },
   {
     id: "local",
     heading: "Local knowledge",
     paragraphs: [
-      "Training is presented as running from one base in Example Town. On a live site, meeting points and routes would reflect that area. No street address is shown here.",
+      "Training is presented as running from one base. On a live site, the routes match that area.",
+      "Nearby towns are not given their own pages.",
     ],
   },
 ];

@@ -1,6 +1,15 @@
 ---
+import CtaBand from "../components/CtaBand.astro";
+import FaqList from "../components/FaqList.astro";
+import LocationPanel from "../components/LocationPanel.astro";
+import ProcessSteps from "../components/ProcessSteps.astro";
 import ResponsiveImage from "../components/ResponsiveImage.astro";
-import { courses } from "../content/courses";
+import RouteCards from "../components/RouteCards.astro";
+import Section from "../components/Section.astro";
+import TestimonialList from "../components/TestimonialList.astro";
+import TrustStrip from "../components/TrustStrip.astro";
+import { faqs } from "../content/faqs";
+import { trainingJourney } from "../content/process";
 import { testimonials } from "../content/testimonials";
 import { trustPoints } from "../content/trust";
 import { site } from "../config/site";
@@ -10,8 +19,8 @@ const image = site.heroImage;
 ---
 
 <BaseLayout
-  title="HGV training website demonstration"
-  description="Demonstration of a Webco Essential website: practical lorry training from one base, with sample courses and a simple way to enquire."
+  title="HGV training"
+  description={`Demonstration of an Essential HGV training website for a provider based in ${site.location.town}. Category C, Category C+E and Driver CPC, with one training base and a simple enquiry.`}
 >
   <section class="hero">
     <div class="wrap">
@@ -29,11 +38,11 @@ const image = site.heroImage;
           </div>
         ) : null
       }
-      <p class="eyebrow">HGV and driver training · {site.location.town}</p>
+      <p class="eyebrow">HGV training · {site.location.town}</p>
       <h1>Practical lorry training from one local base</h1>
       <p class="lede">
-        Category C+E, Category C, C1 and Driver CPC. Straightforward advice and time in the vehicle,
-        with a simple way to enquire.
+        Category C, Category C+E and Driver CPC. Straightforward advice and time in the vehicle, with a
+        simple way to enquire.
       </p>
       <div class="actions">
         <a class="button" href="/contact/#enquiry">Enquire now</a>
@@ -45,104 +54,49 @@ const image = site.heroImage;
     </div>
   </section>
 
-  <section class="block" aria-labelledby="location-heading">
-    <div class="wrap location-split">
-      <div class="section-head">
-        <h2 id="location-heading">One training base</h2>
-        <p class="section-intro">{site.location.summary}</p>
-      </div>
-      <div class="location-panel">
-        <p>
-          <strong>{site.location.town}, {site.location.county}</strong>
-        </p>
-        <p class="example-caption">Placeholder location. Directions would be shared when someone enquires.</p>
-        <div class="actions">
-          <a class="button" href="/contact/#enquiry">Enquire now</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <TrustStrip />
+  <RouteCards />
 
-  <section class="block band" aria-labelledby="courses-heading">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 id="courses-heading">Training</h2>
-        <p class="section-intro">
-          Four sample courses for a provider with one location. Outlines only — durations and fees are
-          confirmed when you enquire.
-        </p>
-      </div>
-      <ul class="group-list">
-        {
-          courses.map((course) => (
-            <li>
-              <a href={`/training/#${course.id}`}>
-                <span class="group-title">{course.title}</span>
-                <span class="group-summary">{course.summary}</span>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-      <div class="actions">
-        <a class="button button-quiet" href="/training/">View training</a>
-      </div>
-    </div>
-  </section>
+  <Section
+    id="why"
+    title="Why train with us"
+    intro="Example wording for a small provider. No statistics, awards or pass rates are shown."
+  >
+    <ul class="trust">
+      {
+        trustPoints.map((point) => (
+          <li>
+            <h3>{point.title}</h3>
+            <p>{point.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
 
-  <section class="block" aria-labelledby="trust-heading">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 id="trust-heading">Why drivers get in touch</h2>
-        <p class="section-intro">
-          Example wording for a small provider. No statistics, awards or review scores are shown.
-        </p>
-      </div>
-      <ul class="trust">
-        {
-          trustPoints.map((point) => (
-            <li>
-              <h3>{point.title}</h3>
-              <p>{point.text}</p>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
+  <ProcessSteps
+    id="how"
+    title="How HGV training works"
+    intro="A simple sequence. Durations are not stated, because none are published on this demonstration."
+    steps={trainingJourney}
+    band={true}
+  />
 
-  <section class="block band" aria-labelledby="testimonials-heading">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 id="testimonials-heading">Sample testimonials</h2>
-        <p class="section-intro">
-          Example wording for the layout. These are not real reviews and do not refer to a real instructor.
-        </p>
-      </div>
-      <ul class="quotes">
-        {
-          testimonials.map((item) => (
-            <li>
-              <p class="quote-flag">Sample</p>
-              <blockquote>
-                <p>{item.quote}</p>
-                <footer>{item.attribution}</footer>
-              </blockquote>
-            </li>
-          ))
-        }
-      </ul>
+  <Section
+    id="proof"
+    title="Learner proof"
+    intro="Example wording for the layout. These are not real reviews, and no score is shown."
+  >
+    <TestimonialList items={testimonials} />
+    <div class="actions">
+      <a class="button button-quiet" href="/reviews/">Read the reviews page</a>
     </div>
-  </section>
+  </Section>
 
-  <section class="cta-band" aria-labelledby="cta-heading">
-    <div class="wrap">
-      <h2 id="cta-heading">Ask about a course</h2>
-      <p>Say which licence you are aiming for, and how you would like to be contacted.</p>
-      <div class="actions">
-        <a class="button" href="/contact/#enquiry">Enquire now</a>
-        <a class="button button-quiet" href={site.phoneHref}>Call {site.phoneDisplay}</a>
-      </div>
-    </div>
-  </section>
+  <LocationPanel id="location" title={`Training in ${site.location.town}`} band={true} />
+  <FaqList id="faq" title="Questions" items={faqs.home} />
+  <CtaBand
+    title="Ask about training"
+    text="Say which licence you are aiming for, or say that you are not sure yet."
+  />
 </BaseLayout>
