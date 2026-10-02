@@ -22,22 +22,24 @@ const image = site.heroImage;
   title="HGV training"
   description={`Demonstration of an Essential HGV training website for a provider based in ${site.location.town}. Category C, Category C+E and Driver CPC, with one training base and a simple enquiry.`}
 >
-  <section class="hero">
+  <section class:list={["hero", image.src && "has-photo"]}>
+    {
+      image.src ? (
+        <div class="hero-media">
+          <ResponsiveImage
+            src={image.src}
+            webp={image.webp}
+            avif={image.avif}
+            alt={image.alt}
+            width={image.width}
+            height={image.height}
+            sizes="(min-width: 64rem) 78vw, 100vw"
+            priority={true}
+          />
+        </div>
+      ) : null
+    }
     <div class="wrap">
-      {
-        image.src ? (
-          <div class="hero-photo">
-            <ResponsiveImage
-              src={image.src}
-              webp={image.webp}
-              avif={image.avif}
-              alt={image.alt}
-              width={image.width}
-              height={image.height}
-            />
-          </div>
-        ) : null
-      }
       <p class="eyebrow">HGV training · {site.location.town}</p>
       <h1>Practical lorry training from one local base</h1>
       <p class="lede">

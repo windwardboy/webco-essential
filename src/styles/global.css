@@ -48,7 +48,7 @@
   --text-lg: 1.2rem;
   --h1: clamp(2.5rem, 1.4rem + 3.6vw, 3.9rem);
   --h2: clamp(1.95rem, 1.45rem + 1.5vw, 2.6rem);
-  --hero-title: clamp(3rem, 1.6rem + 5vw, 5rem);
+  --hero-title: clamp(2.9rem, 1.4rem + 4.6vw, 4.6rem);
   --section: clamp(3.25rem, 2rem + 4.5vw, 5.5rem);
 
   --chevrons: repeating-linear-gradient(-45deg, var(--amber) 0 0.7rem, var(--navy-strong) 0.7rem 1.4rem);
@@ -511,19 +511,6 @@ a:hover {
   background: var(--chevrons);
 }
 
-.hero::after,
-.page-hero::after {
-  content: "";
-  position: absolute;
-  right: -3rem;
-  bottom: 0.65rem;
-  z-index: -1;
-  width: min(56rem, 135%);
-  aspect-ratio: 720 / 210;
-  background: url("/hero-lorry.svg") right bottom / contain no-repeat;
-  pointer-events: none;
-}
-
 .hero > .wrap,
 .page-hero > .wrap {
   position: relative;
@@ -539,7 +526,7 @@ a:hover {
 }
 
 .hero h1 {
-  max-width: 12.5em;
+  max-width: 11em;
   font-size: var(--hero-title);
   line-height: 1;
 }
@@ -565,27 +552,61 @@ a:hover {
   font-size: 0.85rem;
 }
 
-@media (min-width: 48rem) {
-  .page-hero::after {
-    width: min(34rem, 46%);
-    right: 1rem;
-  }
+/* Home hero photo.
+   Below 64rem the photo is a strip under the text. From 64rem it sits to the right and
+   fades into the navy on its left and top edges. With no photo set, the hero is just
+   the navy gradient and chevron strip. */
 
-  .hero::after {
-    width: min(52rem, 68%);
-    right: 0;
-  }
+.hero {
+  --hero-strip: clamp(12rem, 50vw, 21rem);
 }
 
-@media (max-width: 47.99rem) {
-  .page-hero::after {
-    display: none;
+.hero-media {
+  position: absolute;
+  inset: auto 0 0.65rem 0;
+  z-index: -1;
+  height: var(--hero-strip);
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 45%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 45%);
+}
+
+.hero-media picture {
+  display: block;
+  height: 100%;
+}
+
+.hero-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 80% 50%;
+}
+
+.hero.has-photo {
+  padding-bottom: calc(var(--hero-strip) + 0.65rem + 1.25rem);
+}
+
+@media (min-width: 64rem) {
+  .hero-media {
+    inset: auto 0 0.65rem auto;
+    width: min(78%, 80rem);
+    height: auto;
+    aspect-ratio: 2048 / 682;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 45%),
+      linear-gradient(180deg, transparent 0%, #000 40%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(90deg, transparent 0%, #000 45%), linear-gradient(180deg, transparent 0%, #000 40%);
+    mask-composite: intersect;
   }
 
-  .hero::after {
-    right: -20%;
-    width: 150%;
-    opacity: 0.8;
+  .hero-media img {
+    object-position: center;
+  }
+
+  .hero.has-photo {
+    padding-bottom: calc(clamp(4rem, 2rem + 7vw, 7.5rem) + 0.65rem);
   }
 }
 
@@ -613,17 +634,6 @@ a:hover {
 .hero .eyebrow,
 .page-hero .eyebrow {
   color: var(--amber);
-}
-
-.hero-photo {
-  margin-bottom: var(--space-md);
-}
-
-.hero-photo img {
-  display: block;
-  width: 100%;
-  border-radius: var(--radius);
-  object-fit: cover;
 }
 
 .missing {

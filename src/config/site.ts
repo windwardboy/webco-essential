@@ -52,13 +52,19 @@ export const site = {
   googleSiteVerification: "",
   /** GA4 measurement id, such as G-XXXXXXXX. Leave empty until issued. */
   analyticsId: "",
+  /**
+   * Home page hero photo. Concept image for this demonstration only.
+   * A real provider replaces these with their own vehicle photo (wide, with the
+   * vehicle on the right and dark space on the left), or leaves `src` empty.
+   * `webp` and `avif` are srcset strings.
+   */
   heroImage: {
-    src: "",
-    webp: "",
-    avif: "",
-    alt: "",
-    width: 1600,
-    height: 1067,
+    src: "/images/hero-truck-2048.jpg",
+    webp: "/images/hero-truck-1024.webp 1024w, /images/hero-truck-2048.webp 2048w",
+    avif: "/images/hero-truck-1024.avif 1024w, /images/hero-truck-2048.avif 2048w",
+    alt: "A navy articulated lorry with amber chevron livery driving along a wet road at dusk.",
+    width: 2048,
+    height: 682,
   },
 } as const;
 
