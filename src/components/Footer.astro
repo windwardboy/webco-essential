@@ -17,20 +17,15 @@ const pageLinks = [
         <img src="/logo-mark-inverted.svg" width="36" height="36" alt="" />
         <span class="logo-word"><span class="logo-strong">Webco</span> Essential</span>
       </p>
-      <p>{site.demoLine}. Sample content for a single-location HGV training website.</p>
+      <p>Category C, Category C+E and Driver CPC training from one local base.</p>
       <p>
         <strong>{site.location.town}, {site.location.county}</strong>
       </p>
-      <p class="example-caption">Placeholder location. No street address is published.</p>
-      {
-        site.webcoMediaUrl ? (
-          <p>
-            <a href={site.webcoMediaUrl}>Webco Media</a>
-          </p>
-        ) : (
-          <p>Webco Media</p>
-        )
-      }
+      <p class="example-caption">
+        Demonstration website by{" "}
+        {site.webcoMediaUrl ? <a href={site.webcoMediaUrl}>Webco Media</a> : "Webco Media"}. The business, location
+        and contact details are fictional.
+      </p>
     </div>
     <div>
       <p class="footer-label">Training</p>
@@ -57,15 +52,13 @@ const pageLinks = [
       </ul>
     </div>
     <div>
-      <p class="footer-label">Example contact</p>
+      <p class="footer-label">Contact</p>
       <ul class="footer-nav">
         <li>
           <a href={site.phoneHref}>{site.phoneDisplay}</a>
-          <span class="example-tag">Example number</span>
         </li>
         <li>
           <a href={`mailto:${site.email}`}>{site.email}</a>
-          <span class="example-tag">Example address</span>
         </li>
         {
           site.showWhatsApp ? (
@@ -73,8 +66,7 @@ const pageLinks = [
               <a href={site.whatsappHref} rel="noopener noreferrer">
                 WhatsApp
               </a>
-              <span class="example-tag">Example number</span>
-            </li>
+                </li>
           ) : null
         }
         <li>

@@ -5,9 +5,9 @@ export type AboutSection = {
 };
 
 export const aboutIntro = {
-  eyebrow: "About",
+  eyebrow: "About us",
   title: "Training from one local base",
-  lede: "How a small provider introduces the people, the vehicle and the area. Every paragraph on this page is example copy. It does not describe a real instructor or a real business.",
+  lede: "We're a small HGV training business teaching Category C, Category C+E and Driver CPC from a single base. This is a fictional provider, written to show what a finished About page can feel like.",
 };
 
 export const aboutSections: readonly AboutSection[] = [
@@ -15,48 +15,38 @@ export const aboutSections: readonly AboutSection[] = [
     id: "who",
     heading: "Who we are",
     paragraphs: [
-      "This is the introduction a small HGV training provider would write in their own words: what they teach, who they usually teach, and where the training runs from.",
-      "The demonstration keeps that space, and leaves the real introduction empty of invented history.",
+      "We teach people to drive lorries. Our offer is deliberately simple: three courses, one training base and a straight answer when you ask which one you need.",
+      "People usually come to us to move up from a car licence, add a trailer or keep their Driver CPC up to date. Whichever it is, you deal directly with the people who do the training.",
     ],
   },
   {
     id: "team",
-    heading: "Instructor and team",
+    heading: "Instructors",
     paragraphs: [
-      "A live site names the instructor, or the small team, and says who does the training.",
-      "No person is named here.",
-    ],
-  },
-  {
-    id: "experience",
-    heading: "Experience and qualifications",
-    paragraphs: [
-      "This is where a provider can describe experience they can stand behind, in plain language.",
-      "No career history, pass rate, number of drivers, or qualification is shown, because none has been supplied. Logos and approval statements belong here only when they are true.",
+      "Training is delivered by a small team of instructors who work from our base. They explain each exercise before you drive it, and talk it through with you afterwards.",
+      "No instructor names, qualifications or years of experience are shown here, because this is a demonstration website.",
     ],
   },
   {
     id: "approach",
-    heading: "Training approach",
+    heading: "How we teach",
     paragraphs: [
-      "Explain the licence, the practical work and the next step before anyone is asked to commit.",
-      "Time in the vehicle matters more than a list of claims.",
+      "We explain the licence, the practical work and the next step before anyone is asked to commit.",
+      "Each session starts with a short briefing on what we'll cover and finishes with feedback. Time in the vehicle matters more than a list of claims.",
     ],
   },
   {
     id: "vehicles",
-    heading: "Vehicles and facilities",
+    heading: "Vehicles and yard",
     paragraphs: [
-      "A provider describes the lorry, the trailer and the yard they actually use.",
-      "This demonstration does not name a make, a model, a yard or a facility.",
+      "You train in our own rigid lorry and articulated unit and trailer. Reversing and coupling practice happens in the yard at our base before you move on to the road.",
     ],
   },
   {
     id: "local",
-    heading: "Local knowledge",
+    heading: "Local roads",
     paragraphs: [
-      "Training is presented as running from one base. On a live site, the routes match that area.",
-      "Nearby towns are not given their own pages.",
+      "Everything runs from one base, so road work uses the roads around it. That means you practise on the kind of junctions, roundabouts and country roads you'll meet when you start driving for work.",
     ],
   },
 ];

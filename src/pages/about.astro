@@ -14,8 +14,8 @@ const crumbs = pageCrumbs([{ label: "About", href: "/about/" }]);
 ---
 
 <BaseLayout
-  title="About"
-  description={`Example about page for an independent HGV instructor training from one base in ${site.location.town}. No accreditation, pass rate or named instructor is shown.`}
+  title="About us"
+  description={`About a small HGV training business teaching from one local base in ${site.location.town}: who we are, how we teach and where we train. Fictional demonstration provider.`}
   crumbs={crumbs}
 >
   <PageHero crumbs={crumbs} eyebrow={aboutIntro.eyebrow} title={aboutIntro.title} lede={aboutIntro.lede}>
@@ -35,7 +35,7 @@ const crumbs = pageCrumbs([{ label: "About", href: "/about/" }]);
     ))
   }
 
-  <Section id="why" title="Why learners choose us" intro="The same example points used across the site. No figure is attached." band={true}>
+  <Section id="why" title="Why train with us" band={aboutSections.length % 2 === 0}>
     <ul class="trust">
       {
         trustPoints.map((point) => (
@@ -50,17 +50,18 @@ const crumbs = pageCrumbs([{ label: "About", href: "/about/" }]);
 
   <Section
     id="proof"
-    title="Reviews"
-    intro="Sample quotations for the layout. They are not real reviews. Accreditation logos are not shown, because none are claimed."
+    title="What learners say"
+    intro="Sample reviews for this demonstration. They are fictional and not real feedback."
+    band={aboutSections.length % 2 !== 0}
   >
     <TestimonialList items={testimonials} />
     <div class="actions">
-      <a class="button button-quiet" href="/reviews/">Reviews page</a>
+      <a class="button button-quiet" href="/reviews/">Read more reviews</a>
     </div>
   </Section>
 
   <CtaBand
-    title="Talk to the provider"
-    text="Ask about Category C, Category C+E or Driver CPC. The details on the contact page are placeholders."
+    title="Talk to us"
+    text="Ask about Category C, Category C+E or Driver CPC and we will help you work out the right next step."
   />
 </BaseLayout>

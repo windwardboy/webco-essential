@@ -36,7 +36,7 @@ const { id = "location", title = "Training location", band = false } = Astro.pro
             ))}
           </p>
         ) : (
-          <p class="example-caption">No street address is published on this demonstration.</p>
+          <p class="example-caption">{site.location.addressNote}</p>
         )
       }
       <div class="actions">

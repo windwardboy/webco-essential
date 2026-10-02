@@ -5,38 +5,38 @@ export type Step = {
 
 export const trainingJourney: readonly Step[] = [
   {
-    title: "Say what you want to drive",
-    text: "Category C, Category C+E or Driver CPC. If you are not sure, say so and the provider can talk it through.",
+    title: "Tell us what you want to drive",
+    text: "Category C, Category C+E or Driver CPC. If you're not sure, say so and we'll talk it through.",
   },
   {
-    title: "Check what you already hold",
-    text: "The provider looks at your current licence and explains any medical, theory or CPC steps that sit alongside the practical training. This site does not confirm eligibility.",
+    title: "We check what you already hold",
+    text: "We look at your current licence and explain any medical, theory or CPC steps that go alongside the practical training.",
   },
   {
-    title: "Train from the local base",
-    text: "Practical sessions are arranged from one training location. This demonstration does not publish a timetable.",
+    title: "Train from our local base",
+    text: "Practical sessions run from our single training base. We agree dates with you once you've enquired.",
   },
   {
-    title: "Prepare for the next step",
-    text: "That may be a practical test or periodic CPC hours. How booking works is explained when you enquire. No result is claimed here.",
+    title: "Prepare for what comes next",
+    text: "That might be your practical test or periodic CPC hours. We explain how booking works when you get in touch.",
   },
 ];
 
 export const afterEnquiry: readonly Step[] = [
   {
     title: "You get in touch",
-    text: "Send the form, call, or email. Say which course you are asking about, or say that you are not sure.",
+    text: "Send the form, call or email. Tell us which course you're interested in, or that you're not sure yet.",
   },
   {
-    title: "The provider replies",
-    text: "They use the contact method you chose. This demonstration does not promise a response time.",
+    title: "We reply",
+    text: "We use the contact method you chose.",
   },
   {
-    title: "You agree what to discuss",
-    text: "The licence, the training and what you already hold. Nothing is confirmed until the provider has spoken to you.",
+    title: "We talk it through",
+    text: "We go over the licence you hold, the training you need and what it involves. Nothing is confirmed until we've spoken.",
   },
   {
-    title: "Directions follow later",
-    text: "The street address is not published here. It is shared when training is being arranged.",
+    title: "You get directions",
+    text: "Once training is arranged, we send the full address and directions to the base.",
   },
 ];

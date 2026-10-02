@@ -5,7 +5,7 @@ import LocationPanel from "../components/LocationPanel.astro";
 import PageHero from "../components/PageHero.astro";
 import RelatedTraining from "../components/RelatedTraining.astro";
 import Section from "../components/Section.astro";
-import { driverCpc, priceNote } from "../content/courses";
+import { cpcPriceNote, driverCpc } from "../content/courses";
 import { faqs } from "../content/faqs";
 import { site } from "../config/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -19,14 +19,14 @@ const crumbs = pageCrumbs([
 
 <BaseLayout
   title="Driver CPC training"
-  description={`Driver CPC explained for a single-location provider in ${site.location.town}. Periodic training is the example offer. No course code, date, approval or fee is published.`}
+  description={`Periodic Driver CPC training for professional lorry and bus drivers, from one local base in ${site.location.town}. Fictional demonstration provider.`}
   crumbs={crumbs}
 >
   <PageHero
     crumbs={crumbs}
     eyebrow={`Driver CPC · ${site.location.town}`}
     title="Driver CPC"
-    lede="Periodic training for professional drivers, explained without a course code, a date or an approval number. Driver CPC is not a vehicle category."
+    lede="Periodic training for professional lorry and bus drivers who need to keep their Driver Qualification Card up to date. Driver CPC is not a vehicle category."
   >
     <div class="actions">
       <a class="button" href="/contact/?course=driver-cpc#enquiry">Enquire about Driver CPC</a>
@@ -36,7 +36,7 @@ const crumbs = pageCrumbs([
 
   <Section id="what" title="What Driver CPC is" intro={driverCpc.what} band={true} narrow={true}>
     <p>
-      The vehicle entitlements are <a href="/category-c-training/">Category C</a> and
+      The vehicle licences are <a href="/category-c-training/">Category C</a> and
       <a href="/category-ce-training/">Category C+E</a>.
     </p>
   </Section>
@@ -46,7 +46,7 @@ const crumbs = pageCrumbs([
   <Section
     id="types"
     title="Initial and periodic CPC"
-    intro="Two different stages. Only one of them is listed as an offered course below."
+    intro="Two stages of the same qualification. We offer the periodic stage."
     band={true}
   >
     <ul class="cards">
@@ -63,15 +63,15 @@ const crumbs = pageCrumbs([
     </ul>
   </Section>
 
-  <Section id="offered" title="Courses offered" intro="What this demonstration actually lists. Nothing else is implied.">
+  <Section id="offered" title="Courses we offer" intro="What we offer, and what we don't.">
     <ul class="cards">
       <li class="card">
-        <p class="card-kicker">Listed on this demonstration</p>
+        <p class="card-kicker">Offered</p>
         <h3>{driverCpc.offeredTitle}</h3>
         <p>{driverCpc.offeredText}</p>
       </li>
       <li class="card">
-        <p class="card-kicker">Not listed as offered</p>
+        <p class="card-kicker">Not offered</p>
         <h3>Initial Driver CPC</h3>
         <p>{driverCpc.initialNotOffered}</p>
       </li>
@@ -80,23 +80,23 @@ const crumbs = pageCrumbs([
 
   <Section id="format" title="Format and duration" intro={driverCpc.format} band={true} narrow={true} />
 
-  <Section id="price" title="Price and quotes" intro={priceNote} narrow={true}>
+  <Section id="price" title="Price and quotes" intro={cpcPriceNote} narrow={true}>
     <div class="actions">
       <a class="button" href="/contact/?course=driver-cpc#enquiry">Ask for a Driver CPC quote</a>
     </div>
   </Section>
 
   <LocationPanel id="location" title="Training location" band={true} />
-  <FaqList id="faq" title="Questions" items={faqs["driver-cpc"]} />
+  <FaqList id="faq" title="Common questions" items={faqs["driver-cpc"]} />
 
-  <Section id="related" title="Other training" intro="Licence training, if Driver CPC is not the question." band={true}>
+  <Section id="related" title="Other training" intro="If you need a vehicle licence rather than CPC." band={true}>
     <RelatedTraining excludeId="driver-cpc" />
   </Section>
 
   <CtaBand
     id="cta"
     title="Enquire about Driver CPC"
-    text="Say whether you are asking about periodic training, and how you would like to be contacted."
+    text="Tell us you're asking about periodic training, and how you'd like us to get in touch."
     primaryHref="/contact/?course=driver-cpc#enquiry"
     primaryLabel="Enquire about Driver CPC"
   />

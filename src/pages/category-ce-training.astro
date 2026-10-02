@@ -22,14 +22,14 @@ const crumbs = pageCrumbs([
 
 <BaseLayout
   title="Category C+E training"
-  description={`Category C+E articulated and drawbar training from one base in ${site.location.town}. For drivers who already hold Category C. No fee, duration or vehicle is named.`}
+  description={`Category C+E articulated and drawbar training from one local base in ${site.location.town}, for drivers who already hold Category C. Fictional demonstration provider.`}
   crumbs={crumbs}
 >
   <PageHero
     crumbs={crumbs}
     eyebrow={`Category C+E · ${site.location.town}`}
     title="Category C+E training"
-    lede="Trailer training for articulated lorries and drawbar outfits. This page explains the entitlement and the practical work. It does not name a vehicle, a price or a course length."
+    lede="Trailer training for articulated lorries and drawbar combinations. This page explains the licence and the practical work involved."
   >
     <div class="actions">
       <a class="button" href="/contact/?course=category-ce#enquiry">Enquire about Category C+E</a>
@@ -46,7 +46,7 @@ const crumbs = pageCrumbs([
 
   <Section id="who" title="Who it is for" intro={categoryCe.who} narrow={true}>
     <p>
-      If you are still moving up from a car licence, start with
+      If you're still moving up from a car licence, start with
       <a href="/category-c-training/">Category C training</a>.
     </p>
   </Section>
@@ -54,7 +54,7 @@ const crumbs = pageCrumbs([
   <Section
     id="eligibility"
     title="Eligibility guidance"
-    intro="General guidance, not a check of your licence."
+    intro="General guidance only. We check the licence you hold when you enquire."
     band={true}
     narrow={true}
   >
@@ -79,7 +79,7 @@ const crumbs = pageCrumbs([
     <p>{categoryCe.environmentNote}</p>
   </Section>
 
-  <Section id="duration" title="Duration" intro={durationNote} narrow={true} />
+  <Section id="duration" title="How long it takes" intro={durationNote} narrow={true} />
 
   <Section id="price" title="Price and quotes" intro={priceNote} band={true} narrow={true}>
     <div class="actions">
@@ -87,7 +87,7 @@ const crumbs = pageCrumbs([
     </div>
   </Section>
 
-  <Section id="why" title="Why choose this provider" intro="Example points. No pass rate or award is attached.">
+  <Section id="why" title="Why train with us">
     <ul class="trust">
       {
         trustPoints.map((point) => (
@@ -104,25 +104,25 @@ const crumbs = pageCrumbs([
 
   <Section
     id="proof"
-    title="Learner proof"
-    intro="A sample quotation for the layout. It is not a real review, and it is not a rating."
+    title="What learners say"
+    intro="A sample review for this demonstration. It is fictional and not real feedback."
   >
     <TestimonialList items={testimonialsFor("category-ce")} />
     <div class="actions">
-      <a class="button button-quiet" href="/reviews/">Reviews</a>
+      <a class="button button-quiet" href="/reviews/">Read more reviews</a>
     </div>
   </Section>
 
-  <FaqList id="faq" title="Questions" items={faqs["category-ce"]} band={true} />
+  <FaqList id="faq" title="Common questions" items={faqs["category-ce"]} band={true} />
 
-  <Section id="related" title="Other training" intro="The rest of the core offer.">
+  <Section id="related" title="Other training" intro="The rest of our courses.">
     <RelatedTraining excludeId="category-ce" />
   </Section>
 
   <CtaBand
     id="cta"
     title="Enquire about Category C+E"
-    text="Say whether you already hold Category C, and how you would like to be contacted."
+    text="Tell us whether you already hold Category C, and how you'd like us to get in touch."
     primaryHref="/contact/?course=category-ce#enquiry"
     primaryLabel="Enquire about Category C+E"
   />

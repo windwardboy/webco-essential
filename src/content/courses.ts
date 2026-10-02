@@ -24,7 +24,7 @@ export const courses: readonly Course[] = [
     navLabel: "Category C",
     kicker: "Rigid lorries",
     path: "/category-c-training/",
-    summary: "Practical training for rigid goods vehicles over 3.5 tonnes, for drivers moving up from a car licence.",
+    summary: "Practical training for rigid lorries over 3.5 tonnes, for drivers moving up from a car licence.",
   },
   {
     id: "category-ce",
@@ -32,7 +32,7 @@ export const courses: readonly Course[] = [
     navLabel: "Category C+E",
     kicker: "Articulated and drawbar",
     path: "/category-ce-training/",
-    summary: "Trailer training for drivers who already hold Category C and need the articulated or drawbar entitlement.",
+    summary: "Trailer training for drivers who already hold Category C and want to drive articulated or drawbar lorries.",
   },
   {
     id: "driver-cpc",
@@ -40,7 +40,7 @@ export const courses: readonly Course[] = [
     navLabel: "Driver CPC",
     kicker: "Professional drivers",
     path: "/driver-cpc/",
-    summary: "Periodic training for professional drivers. This demonstration does not list a course code, a date or an approval number.",
+    summary: "Periodic training for professional drivers who need hours towards their five-year Driver CPC requirement.",
   },
 ];
 
@@ -54,107 +54,105 @@ export const licenceComparison = [
     id: "category-c",
     label: "Category C",
     path: "/category-c-training/",
-    covers: "Rigid goods vehicles over 3.5 tonnes.",
-    startingPoint: "Usually a category B car licence, then the medical and theory steps for a lorry test.",
+    covers: "Rigid lorries over 3.5 tonnes.",
+    startingPoint: "Usually a category B car licence, plus a lorry medical and the theory tests.",
   },
   {
     id: "category-ce",
     label: "Category C+E",
     path: "/category-ce-training/",
     covers: "Articulated lorries and drawbar combinations.",
-    startingPoint: "Category C is the usual entitlement held before this training.",
+    startingPoint: "Category C is the usual licence held before this training.",
   },
   {
     id: "driver-cpc",
     label: "Driver CPC",
     path: "/driver-cpc/",
-    covers: "A professional qualification for lorry and bus drivers. Not a vehicle category.",
-    startingPoint: "Depends on whether the driver needs initial or periodic CPC.",
+    covers: "A professional qualification for lorry and bus drivers. It is not a vehicle category.",
+    startingPoint: "Depends on whether you need initial or periodic CPC.",
   },
 ] as const;
 
 export const whichLicence = [
   {
     title: "Category C",
-    text: "The usual route onto a rigid lorry when you hold a car licence and want to drive goods vehicles over 3.5 tonnes.",
+    text: "The usual route onto a rigid lorry if you hold a car licence and want to drive goods vehicles over 3.5 tonnes.",
     href: "/category-c-training/",
   },
   {
     title: "Category C+E",
-    text: "The trailer entitlement, for articulated lorries and drawbar outfits, once Category C is held.",
+    text: "The trailer licence, for articulated lorries and drawbar combinations, once you hold Category C.",
     href: "/category-ce-training/",
   },
   {
     title: "Driver CPC",
-    text: "The professional qualification that sits alongside the licence for many paid driving jobs. It does not replace Category C or C+E.",
+    text: "The professional qualification that goes alongside your licence for many paid driving jobs. It doesn't replace Category C or C+E.",
     href: "/driver-cpc/",
   },
 ] as const;
 
 export const durationNote =
-  "No course length is published here. It depends on the licence already held and how the training days are arranged.";
+  "How long training takes depends on the licence you already hold, your driving experience and how the sessions are arranged. We agree a plan with you when you enquire, rather than quoting a standard length.";
 
 export const priceNote =
-  "No fee is published here. Ask for a quote for the training you need. Medicals, theory tests and the practical test are separate costs, and those figures are not listed on this demonstration.";
+  "We don't publish a fixed price list, because the right training depends on the licence you hold and how much practice you need. Ask for a quote for the course you want. Medical, theory test and practical test fees are separate costs, and we explain them when we quote.";
+
+export const cpcPriceNote =
+  "We don't publish a fixed price list. Ask for a quote for the module or modules you need, and we'll confirm the current fee and dates.";
 
 export const categoryC = {
-  who: "People who want to drive a rigid goods vehicle over 3.5 tonnes. The usual starting point is a category B car licence. Medical and theory steps sit alongside the practical training.",
+  who: "Drivers who want to move up from a car licence to a rigid lorry over 3.5 tonnes. You will usually need a category B car licence, and the medical and theory steps sit alongside the practical training.",
   driveIntro:
-    "Category C is the rigid lorry entitlement. It covers goods vehicles over 3.5 tonnes maximum authorised mass that are not articulated.",
+    "Category C is the rigid lorry licence. It covers goods vehicles over 3.5 tonnes maximum authorised mass that are not articulated.",
   drivePoints: [
     "Rigid goods vehicles such as box wagons, tippers, flatbeds and similar lorries",
-    "Not an articulated lorry or a drawbar outfit. That is Category C+E",
+    "Not an articulated lorry or a drawbar combination. That is Category C+E",
   ],
-  driveNote:
-    "The vehicle used for training belongs to the provider. This demonstration does not name a make or model.",
+  driveNote: "You train in our own rigid training lorry.",
   eligibility: [
     "A category B car licence is the usual starting point",
-    "A medical assessment is normally required before a lorry practical test",
-    "Theory tests sit alongside the time in the vehicle",
+    "A medical assessment is normally needed before a lorry practical test",
+    "Theory tests go alongside your time in the vehicle",
     "Paid driving work can also require Driver CPC, which is separate from the Category C licence",
-    "Age and medical rules depend on the person and the work. This page does not confirm that someone qualifies",
+    "Age and medical rules depend on the person and the work, so this page can't confirm whether you qualify. We check when you enquire",
   ],
   includes: [
-    "Familiarisation with a rigid goods vehicle",
-    "Reversing and off-road manoeuvres",
+    "Getting to know a rigid goods vehicle",
+    "Reversing and manoeuvres in the yard",
     "On-road driving",
     "Guidance on what the practical test involves",
   ],
   steps: [
     {
       title: "Enquire about Category C",
-      text: "Say that a rigid lorry is the aim, and how you would like to be contacted.",
+      text: "Tell us you want to drive a rigid lorry, and how you'd like us to get in touch.",
     },
     {
-      title: "Check the licence you hold",
-      text: "The provider looks at your current licence and explains the medical and theory steps. This page does not confirm eligibility.",
+      title: "We check your licence",
+      text: "We look at the licence you hold and explain the medical and theory steps.",
     },
     {
       title: "Train in the vehicle",
-      text: "Practical time covers the vehicle, the manoeuvres and the road driving.",
+      text: "Practical sessions cover getting to know the lorry, manoeuvres and road driving.",
     },
     {
       title: "Prepare for the practical test",
-      text: "How the test is booked is explained when you enquire. This site does not claim a result.",
+      text: "We explain how the test is booked and what to expect on the day.",
     },
   ] as const satisfies readonly Step[],
 };
 
 export const categoryCe = {
   driveIntro:
-    "Category C+E adds a trailer to the rigid entitlement. It is the licence used for articulated lorries and for drawbar combinations.",
-  drivePoints: [
-    "Articulated goods vehicles",
-    "Rigid lorries towing a drawbar trailer",
-  ],
-  driveNote:
-    "This demonstration does not name the tractor unit or the trailer.",
-  who: "Drivers who already hold Category C and need to add the trailer entitlement. It is not the first step up from a car licence.",
+    "Category C+E adds a trailer to the rigid lorry licence. It covers articulated lorries and drawbar combinations.",
+  drivePoints: ["Articulated lorries", "Rigid lorries towing a drawbar trailer"],
+  driveNote: "You train in our own articulated unit and trailer.",
+  who: "Drivers who already hold Category C and want to add a trailer. It isn't the first step up from a car licence.",
   eligibility: [
-    "Category C is the usual entitlement held before C+E training",
-    "The provider checks the licence you hold before training is arranged",
-    "Any medical or theory steps that still apply are explained at that point",
-    "This page is general guidance. It does not confirm eligibility for an individual",
+    "Category C is the usual licence held before C+E training",
+    "We check the licence you hold before training is arranged",
+    "We explain any medical or theory steps that still apply",
+    "This page is general guidance and can't confirm eligibility for an individual",
   ],
   includes: [
     "Coupling and uncoupling",
@@ -163,25 +161,25 @@ export const categoryCe = {
     "Guidance on what the practical test involves",
   ],
   environment:
-    "Training is yard work and road driving from one base. Coupling, uncoupling and trailer manoeuvres are the practical core of a C+E course.",
+    "Training is yard work and road driving from our base. Coupling, uncoupling and trailer manoeuvres are the practical core of a C+E course.",
   environmentNote:
-    "The unit, the trailer and the yard are named on a live site only when they are the provider’s. None are named here.",
+    "You practise coupling and reversing in the yard before moving on to the road with the combination.",
 };
 
 export const driverCpc = {
-  what: "Driver CPC is the professional qualification for people who drive lorries or buses for a living. It is not a vehicle category. Category C and Category C+E are the licence entitlements. Driver CPC sits alongside that work for drivers who need a Driver Qualification Card.",
-  who: "Professional lorry and bus drivers. Some types of work are exempt, and that depends on the job rather than on a rule this page can apply for you. Ask the provider, or check current official guidance, before you book.",
+  what: "Driver CPC is the professional qualification for people who drive lorries or buses for a living. It is not a vehicle category: Category C and Category C+E are the licences, and Driver CPC sits alongside them for drivers who need a Driver Qualification Card.",
+  who: "Professional lorry and bus drivers. Some types of work are exempt, and that depends on the job rather than on anything we can decide for you. Ask us, or check current official guidance, before you book.",
   initial:
-    "Initial CPC is the qualification a new professional driver takes when moving into vocational driving. It is explained here so the difference is clear.",
+    "Initial CPC is the qualification a new professional driver takes when moving into vocational driving. We explain it here so the difference from periodic CPC is clear.",
   periodic:
-    "Periodic CPC is ongoing training for a driver who already holds a Driver Qualification Card, so the card can stay valid. It is widely described as 35 hours across five years. Rules are updated, so a driver should check current official guidance for their own card. This site does not calculate anyone’s hours.",
+    "Periodic CPC is ongoing training for a driver who already holds a Driver Qualification Card, so the card stays valid. Drivers need 35 hours of periodic training every five years. Rules can change, so check current official guidance for your own card. We can't calculate anyone's hours on this website.",
   offeredTitle: "Periodic Driver CPC",
   offeredText:
-    "Module-style periodic training for drivers who need hours towards the five-year requirement. No course code, approval number, date or centre number is published on this demonstration.",
+    "Training modules for drivers who already hold a Driver Qualification Card and need hours towards their five-year requirement. Ask us which modules we are running and when.",
   initialNotOffered:
-    "Initial Driver CPC is not listed as an offered course on this demonstration. A provider who genuinely runs it can add it here, in their own words.",
+    "We don't currently offer Initial Driver CPC. If you're a new professional driver who needs it, get in touch and we'll point you in the right direction.",
   format:
-    "A periodic module is a set block of training, in a classroom or with a practical element, depending on the subject. This demonstration does not publish a timetable or a module length.",
+    "A periodic module is a set block of training, in a classroom or with a practical element, depending on the subject. Module lengths and dates are confirmed when you enquire.",
 };
 
 export function otherCourses(id: string): readonly Course[] {

@@ -16,15 +16,15 @@ const crumbs = pageCrumbs([{ label: "HGV training", href: "/hgv-training/" }]);
 ---
 
 <BaseLayout
-  title="HGV training overview"
-  description={`Compare Category C, Category C+E and Driver CPC for a single-location provider in ${site.location.town}. No fees, durations or eligibility decisions are published on this demonstration.`}
+  title="HGV training courses"
+  description={`Compare Category C, Category C+E and Driver CPC training from one local base in ${site.location.town}, and find out which licence suits you. Fictional demonstration provider.`}
   crumbs={crumbs}
 >
   <PageHero
     crumbs={crumbs}
     eyebrow={`HGV training · ${site.location.town}`}
-    title="HGV training"
-    lede="Category C, Category C+E and Driver CPC from one base. This page compares the routes. It does not confirm eligibility, a price or a course length."
+    title="HGV training courses"
+    lede="Category C, Category C+E and Driver CPC from one local base. Use this page to compare the courses and work out which one suits you."
   >
     <div class="actions">
       <a class="button" href="/contact/#enquiry">Enquire now</a>
@@ -35,14 +35,14 @@ const crumbs = pageCrumbs([{ label: "HGV training", href: "/hgv-training/" }]);
   <Section
     id="comparison"
     title="Licence comparison"
-    intro="Three routes. Each has its own page, so this overview stays a comparison rather than a second copy of the course detail."
+    intro="Three courses, each with its own page for the detail."
     band={true}
   >
     <div class="table-scroll">
       <table class="compare">
         <thead>
           <tr>
-            <th scope="col">Route</th>
+            <th scope="col">Course</th>
             <th scope="col">What it covers</th>
             <th scope="col">Usual starting point</th>
           </tr>
@@ -65,7 +65,7 @@ const crumbs = pageCrumbs([{ label: "HGV training", href: "/hgv-training/" }]);
   <Section
     id="which-licence"
     title="Which licence is right for me?"
-    intro="General guidance only. The provider checks the licence you hold when you enquire."
+    intro="A quick guide. We check the licence you already hold when you enquire."
     narrow={true}
   >
     <ul class="related-links">
@@ -86,7 +86,7 @@ const crumbs = pageCrumbs([{ label: "HGV training", href: "/hgv-training/" }]);
   <ProcessSteps
     id="journey"
     title="Typical training journey"
-    intro="The same sequence a driver can expect to talk through. No timetable is attached."
+    intro="What to expect, from your first enquiry to training day."
     steps={trainingJourney}
     band={true}
   />
@@ -94,7 +94,7 @@ const crumbs = pageCrumbs([{ label: "HGV training", href: "/hgv-training/" }]);
   <Section
     id="includes"
     title="What training includes"
-    intro="Each course page sets out the practical work. In short, the core offer is:"
+    intro="Each course page sets out the practical work in detail. In short:"
   >
     <ul class="related-links">
       {
@@ -115,16 +115,16 @@ const crumbs = pageCrumbs([{ label: "HGV training", href: "/hgv-training/" }]);
     band={true}
     narrow={true}
   >
-    <p>Choose a route, then ask for a quote for that training. There is no price list on this demonstration.</p>
+    <p>Choose a course, then ask for a quote for that training.</p>
     <div class="actions">
       <a class="button" href="/contact/#enquiry">Request a quote</a>
     </div>
   </Section>
 
   <LocationPanel id="location" title="Training location" />
-  <FaqList id="faq" title="Questions" items={faqs.overview} band={true} />
+  <FaqList id="faq" title="Common questions" items={faqs.overview} band={true} />
   <CtaBand
-    title="Talk through the right route"
-    text="Say which licence you are considering, or ask for a steer if you are not sure."
+    title="Talk through the right course"
+    text="Tell us which licence you're considering, or ask for a steer if you're not sure."
   />
 </BaseLayout>

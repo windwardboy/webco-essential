@@ -8,108 +8,106 @@ export const faqs: Record<string, readonly FaqItem[]> = {
     {
       question: "Which licence do I need?",
       answer:
-        "Category C is the usual route onto a rigid lorry. Category C+E adds a trailer. Driver CPC is the professional qualification, not a vehicle category. The HGV training page compares them, and you can ask if you are not sure.",
+        "Category C is the usual route onto a rigid lorry. Category C+E adds a trailer. Driver CPC is the professional qualification, not a vehicle category. The HGV training page compares them, and you can ask us if you're not sure.",
     },
     {
-      question: "Do you publish prices?",
+      question: "How much does training cost?",
       answer:
-        "No. This demonstration does not list a fee. The enquiry form is how you ask for a quote on a live site.",
+        "We quote for each learner, because the right training depends on the licence you hold and how much practice you need. Send an enquiry and tell us what you want to drive.",
     },
     {
       question: "Where does the training take place?",
       answer:
-        "From one base. The town on this demonstration is a placeholder, and no street address is published. Directions are shared when training is being arranged.",
+        "From our single local base. We send the full address and directions once your training is arranged.",
     },
     {
-      question: "Are the reviews real?",
+      question: "Are the reviews on this site real?",
       answer:
-        "No. The quotations are samples for the layout. A live site should only show feedback the provider can stand behind. No rating is shown here.",
+        "No. This is a demonstration website, so the reviews are fictional samples and no rating is shown.",
     },
   ],
   overview: [
     {
       question: "What is the difference between Category C and Category C+E?",
       answer:
-        "Category C is the rigid lorry entitlement. Category C+E adds a trailer, for articulated lorries and drawbar outfits. C+E training normally follows Category C.",
+        "Category C is the rigid lorry licence. Category C+E adds a trailer, for articulated lorries and drawbar combinations. C+E training normally follows Category C.",
     },
     {
       question: "Is Driver CPC the same as an HGV licence?",
       answer:
-        "No. Category C and Category C+E are vehicle entitlements. Driver CPC is a professional qualification for drivers who need a Driver Qualification Card.",
+        "No. Category C and Category C+E are vehicle licences. Driver CPC is a professional qualification for drivers who need a Driver Qualification Card.",
     },
     {
-      question: "Can this page tell me if I am eligible?",
+      question: "Can you tell me if I'm eligible?",
       answer:
-        "No. It is general guidance. The provider checks the licence you hold when you enquire. Nothing here confirms that a particular person qualifies.",
+        "Not from a web page. This is general guidance. We check the licence you hold when you enquire and tell you what applies to you.",
     },
     {
-      question: "Why is there no price list?",
+      question: "Why don't you list prices?",
       answer:
-        "Because a fee has not been supplied for this demonstration, and one should not be invented. Ask for a quote for the training you need.",
+        "The right training depends on the licence you already hold and how much practice you need, so we quote for each learner individually. Ask for a quote for the course you want.",
     },
   ],
   "category-c": [
     {
       question: "What does Category C allow me to drive?",
       answer:
-        "Rigid goods vehicles over 3.5 tonnes. It does not cover an articulated lorry or a drawbar trailer. That is Category C+E.",
+        "Rigid goods vehicles over 3.5 tonnes. It doesn't cover an articulated lorry or a drawbar trailer. That is Category C+E.",
     },
     {
       question: "What do I need before practical training?",
       answer:
-        "A car licence is the usual starting point, and a medical assessment and theory tests normally sit alongside the practical training. The provider checks your licence. This page does not confirm eligibility.",
+        "A car licence is the usual starting point, and a medical assessment and theory tests normally go alongside the practical training. We check your licence when you enquire.",
     },
     {
       question: "How long does Category C take?",
       answer:
-        "No duration is published here. It depends on the licence you hold and how the days are arranged.",
+        "It depends on the licence you hold, your driving experience and how the days are arranged. We agree a plan with you when you enquire.",
     },
     {
       question: "How much does Category C cost?",
       answer:
-        "No fee is published here. Ask for a quote. Medicals, theory tests and the practical test are separate costs and are not listed on this demonstration.",
+        "Ask us for a quote. Medical, theory test and practical test fees are separate costs, and we explain them when we quote.",
     },
   ],
   "category-ce": [
     {
       question: "Do I need Category C before C+E?",
       answer:
-        "Category C is the usual entitlement held before trailer training. If you do not hold it yet, start with Category C training.",
+        "Category C is the usual licence held before trailer training. If you don't hold it yet, start with Category C training.",
     },
     {
       question: "What will I be driving?",
-      answer:
-        "An articulated lorry or a drawbar combination. The unit and trailer are not named on this demonstration.",
+      answer: "An articulated lorry or a drawbar combination, depending on the entitlement you need.",
     },
     {
       question: "How long does Category C+E take?",
-      answer: "No duration is published here. It is confirmed when you enquire.",
+      answer: "It depends on your experience with a trailer. We agree a plan with you when you enquire.",
     },
     {
       question: "How do I get a quote?",
-      answer:
-        "Use the enquiry form or the phone number and say you are asking about Category C+E. No price is listed on this page.",
+      answer: "Use the enquiry form or call us and say you're asking about Category C+E.",
     },
   ],
   "driver-cpc": [
     {
       question: "What is Driver CPC?",
       answer:
-        "The professional qualification for lorry and bus drivers who need a Driver Qualification Card. It is not a vehicle category.",
+        "The professional qualification for lorry and bus drivers who need a Driver Qualification Card. It isn't a vehicle category.",
     },
     {
       question: "What is the difference between initial and periodic CPC?",
       answer:
-        "Initial CPC is for a new professional driver. Periodic CPC is ongoing training for someone who already holds a Driver Qualification Card. This demonstration lists periodic training only.",
+        "Initial CPC is for a new professional driver. Periodic CPC is ongoing training for someone who already holds a Driver Qualification Card. We offer periodic training.",
     },
     {
-      question: "Which CPC courses are offered here?",
+      question: "Which CPC courses do you offer?",
       answer:
-        "Periodic Driver CPC is the example offer. No module code, approval number or date is published. Initial CPC is not listed as an offered course on this demonstration.",
+        "Periodic Driver CPC. We don't currently offer Initial Driver CPC, but we can point you in the right direction if you need it.",
     },
     {
-      question: "Do you publish dates and prices?",
-      answer: "No. Dates and fees are confirmed when you enquire. None are invented on this page.",
+      question: "Where can I find dates and prices?",
+      answer: "We confirm module dates and fees when you enquire, so you get current information for the course you want.",
     },
   ],
 };

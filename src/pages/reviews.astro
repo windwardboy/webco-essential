@@ -14,14 +14,14 @@ const googleReviews = httpsUrl(site.googleReviewsUrl);
 
 <BaseLayout
   title="Reviews"
-  description="Sample review layout for a Webco Essential training website. No rating, review count or Google score is shown, because none is claimed."
+  description="What learners say about HGV training from a fictional provider on a Webco Essential demonstration website. All reviews are samples."
   crumbs={crumbs}
 >
   <PageHero
     crumbs={crumbs}
     eyebrow="Reviews"
-    title="Reviews"
-    lede="Space for feedback a provider can stand behind. This demonstration does not show a rating, a review count or a Google score."
+    title="What our learners say"
+    lede="Comments on Category C, Category C+E and Driver CPC training. The reviews on this page are fictional samples written for this demonstration, and no rating or review count is shown."
   >
     <div class="actions">
       <a class="button" href="/contact/#enquiry">Enquire now</a>
@@ -29,25 +29,20 @@ const googleReviews = httpsUrl(site.googleReviewsUrl);
     </div>
   </PageHero>
 
-  <Section
-    id="overview"
-    title="Proof overview"
-    intro="No score is shown, because none is claimed. On a live site this area can introduce real feedback without inventing a figure."
-    band={true}
-    narrow={true}
-  >
-    <p class="example-caption">Sample layout only. Not a review score.</p>
-  </Section>
-
-  <Section
-    id="testimonials"
-    title="Testimonials"
-    intro="Example wording. Each quotation is marked as a sample and does not refer to a real learner."
-  >
+  <Section id="testimonials" title="Learner comments" intro="A short comment from a learner on each of our courses.">
     <TestimonialList items={testimonials} />
   </Section>
 
-  <Section id="google" title="Google reviews" intro={site.googleReviewsNote} band={true}>
+  <Section
+    id="stories"
+    title="Longer reviews"
+    intro="Fuller comments from the same sample learners."
+    band={true}
+  >
+    <TestimonialList items={testimonials} detailed={true} stacked={true} />
+  </Section>
+
+  <Section id="google" title="Google reviews" intro={googleReviews ? "Prefer to read more? See what learners have said about us on Google." : site.googleReviewsNote}>
     {
       googleReviews ? (
         <div class="actions">
@@ -55,28 +50,12 @@ const googleReviews = httpsUrl(site.googleReviewsUrl);
             Read the Google reviews
           </a>
         </div>
-      ) : (
-        <div class="panel">
-          <h3>No Google profile is connected</h3>
-          <p>
-            Add a reviews link in the site configuration when the provider has a profile they want to share.
-            A rating is still not invented to fill the gap.
-          </p>
-        </div>
-      )
+      ) : null
     }
-  </Section>
-
-  <Section
-    id="stories"
-    title="Selected learner stories"
-    intro="Longer sample notes, using the same example learners as the quotations above. Not real stories."
-  >
-    <TestimonialList items={testimonials} detailed={true} stacked={true} />
   </Section>
 
   <CtaBand
     title="Ask about training"
-    text="The reviews on this demonstration are samples. The enquiry is how a driver asks about a real course."
+    text="Tell us which course you're interested in and we'll take it from there."
   />
 </BaseLayout>

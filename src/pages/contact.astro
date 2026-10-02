@@ -13,22 +13,22 @@ const mapUrl = httpsUrl(site.mapEmbedUrl);
 ---
 
 <BaseLayout
-  title="Contact"
-  description={`Example phone, email and enquiry form for HGV training in ${site.location.town}. Messages are not sent, and no street address is published.`}
+  title="Contact us"
+  description={`Call, email or send an enquiry about HGV training from one local base in ${site.location.town}. Fictional demonstration provider: the contact details and form are placeholders.`}
   crumbs={crumbs}
 >
   <PageHero
     crumbs={crumbs}
-    eyebrow="Contact"
-    title="Contact"
-    lede="Phone, email and a short enquiry form. The details on this page are placeholders, and the form does not send a message."
+    eyebrow="Get in touch"
+    title="Contact us"
+    lede="Call, email or send the short enquiry form. Tell us which course you're interested in and how you'd like us to reply. The phone number, email and form on this demonstration site are placeholders."
   />
 
   <div class="block band">
     <div class="wrap contact-layout">
       <section aria-labelledby="enquiry">
-        <h2 id="enquiry">Enquiry</h2>
-        <p class="section-intro">Say which course you are asking about. Nothing you type on this demonstration is stored.</p>
+        <h2 id="enquiry">Send an enquiry</h2>
+        <p class="section-intro">Tell us which course you're asking about and how you'd like us to get in touch.</p>
         <div class="enquiry-offset">
           <EnquiryForm />
         </div>
@@ -38,11 +38,9 @@ const mapUrl = httpsUrl(site.mapEmbedUrl);
         <ul class="contact-list">
           <li>
             <a href={site.phoneHref}>{site.phoneDisplay}</a>
-            <span class="example-tag">Example number</span>
           </li>
           <li>
             <a href={`mailto:${site.email}`}>{site.email}</a>
-            <span class="example-tag">Example address</span>
           </li>
           {
             site.showWhatsApp ? (
@@ -50,11 +48,11 @@ const mapUrl = httpsUrl(site.mapEmbedUrl);
                 <a href={site.whatsappHref} rel="noopener noreferrer">
                   WhatsApp {site.whatsappDisplay}
                 </a>
-                <span class="example-tag">Example number</span>
               </li>
             ) : null
           }
         </ul>
+        <p class="example-caption">Placeholder contact details for the demonstration.</p>
       </address>
     </div>
   </div>
@@ -76,7 +74,7 @@ const mapUrl = httpsUrl(site.mapEmbedUrl);
               ))}
             </p>
           ) : (
-            <p class="example-caption">No street address is published on this demonstration.</p>
+            <p class="example-caption">{site.location.addressNote}</p>
           )
         }
       </div>
@@ -105,14 +103,12 @@ const mapUrl = httpsUrl(site.mapEmbedUrl);
         site.location.hours.map((row) => (
           <div>
             <dt>{row.label}</dt>
-            <dd>
-              {row.value}
-              <span class="example-tag">Example</span>
-            </dd>
+            <dd>{row.value}</dd>
           </div>
         ))
       }
     </dl>
+    <p class="example-caption">Placeholder hours for the demonstration.</p>
   </Section>
 
   <Section id="areas" title="Areas served" intro={site.location.areasNote}>
@@ -123,8 +119,8 @@ const mapUrl = httpsUrl(site.mapEmbedUrl);
 
   <ProcessSteps
     id="after"
-    title="What happens after an enquiry"
-    intro="A plain sequence. No response time is promised."
+    title="What happens after you enquire"
+    intro="A simple sequence, so you know what to expect."
     steps={afterEnquiry}
     band={true}
   />

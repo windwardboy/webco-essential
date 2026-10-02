@@ -20,7 +20,7 @@ const image = site.heroImage;
 
 <BaseLayout
   title="HGV training"
-  description={`Demonstration of an Essential HGV training website for a provider based in ${site.location.town}. Category C, Category C+E and Driver CPC, with one training base and a simple enquiry.`}
+  description={`Category C, Category C+E and Driver CPC training from one local base in ${site.location.town}. A fictional provider on a Webco Essential demonstration website.`}
 >
   <section class:list={["hero", image.src && "has-photo"]}>
     {
@@ -43,15 +43,15 @@ const image = site.heroImage;
       <p class="eyebrow">HGV training · {site.location.town}</p>
       <h1>Practical lorry training from one local base</h1>
       <p class="lede">
-        Category C, Category C+E and Driver CPC. Straightforward advice and time in the vehicle, with a
-        simple way to enquire.
+        Category C, Category C+E and Driver CPC, taught from one training base. Straightforward advice, time in the
+        vehicle and an easy way to get in touch.
       </p>
       <div class="actions">
         <a class="button" href="/contact/#enquiry">Enquire now</a>
         <a class="button button-quiet" href={site.phoneHref}>Call us</a>
       </div>
       <p class="example-caption">
-        {site.location.town} and {site.phoneDisplay} are placeholders. This is not a real training business.
+        Fictional demonstration: {site.location.town} and {site.phoneDisplay} are placeholders, and this is not a real training business.
       </p>
     </div>
   </section>
@@ -59,11 +59,7 @@ const image = site.heroImage;
   <TrustStrip />
   <RouteCards />
 
-  <Section
-    id="why"
-    title="Why train with us"
-    intro="Example wording for a small provider. No statistics, awards or pass rates are shown."
-  >
+  <Section id="why" title="Why train with us">
     <ul class="trust">
       {
         trustPoints.map((point) => (
@@ -79,26 +75,26 @@ const image = site.heroImage;
   <ProcessSteps
     id="how"
     title="How HGV training works"
-    intro="A simple sequence. Durations are not stated, because none are published on this demonstration."
+    intro="From first enquiry to training day, in four steps."
     steps={trainingJourney}
     band={true}
   />
 
   <Section
     id="proof"
-    title="Learner proof"
-    intro="Example wording for the layout. These are not real reviews, and no score is shown."
+    title="What learners say"
+    intro="Sample reviews for this demonstration. They are fictional and not real feedback."
   >
     <TestimonialList items={testimonials} />
     <div class="actions">
-      <a class="button button-quiet" href="/reviews/">Read the reviews page</a>
+      <a class="button button-quiet" href="/reviews/">Read more reviews</a>
     </div>
   </Section>
 
   <LocationPanel id="location" title={`Training in ${site.location.town}`} band={true} />
-  <FaqList id="faq" title="Questions" items={faqs.home} />
+  <FaqList id="faq" title="Common questions" items={faqs.home} />
   <CtaBand
     title="Ask about training"
-    text="Say which licence you are aiming for, or say that you are not sure yet."
+    text="Tell us which licence you are aiming for, or that you are not sure yet, and we will point you in the right direction."
   />
 </BaseLayout>

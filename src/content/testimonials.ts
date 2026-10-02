@@ -6,32 +6,31 @@ export type Testimonial = {
   attribution: string;
 };
 
-/** Example quotations for layout only. Not real reviews. */
+/** Fictional sample reviews. Each is shown with a "Sample" tag. They report no test results. */
 export const testimonials: readonly Testimonial[] = [
   {
     id: "category-c",
     courseId: "category-c",
-    quote:
-      "The instruction was calm and practical. I knew which manoeuvres we would work on before each session.",
+    quote: "I'd never driven anything bigger than a van. Each session started with a clear plan, so I always knew what we were working on.",
     detail:
-      "Sample note for the layout. The learner was moving from a car licence to a rigid lorry, and each session was described in advance. This is not a real review, and it does not report a test result.",
-    attribution: "Sample learner, moving from a car licence to Category C",
+      "I'd never driven anything bigger than a van, so the size of the lorry worried me at first. Each session began with a short briefing on what we'd be working on and finished with feedback on how it had gone. Reversing was the part I found hardest, and it was explained patiently until it made sense.",
+    attribution: "Sample learner, Category C",
   },
   {
     id: "category-ce",
     courseId: "category-ce",
-    quote: "Coupling the trailer made sense once it was explained in the yard, then practised.",
+    quote: "Coupling and uncoupling felt daunting at first. Practising in the yard before we went on the road made all the difference.",
     detail:
-      "Sample note for the layout. The learner was adding a trailer entitlement, and the yard work came before the road. This is not a real review, and it does not name an instructor or a vehicle.",
-    attribution: "Sample learner, adding Category C+E",
+      "I already held Category C and wanted to add the trailer. We spent time in the yard on coupling, uncoupling and reversing before taking the combination out on the road, so I wasn't trying to learn everything at once.",
+    attribution: "Sample learner, Category C+E",
   },
   {
     id: "driver-cpc",
     courseId: "driver-cpc",
-    quote: "The module was clearly described, including how the hours were said to fit the five-year requirement.",
+    quote: "It was clear what the module covered and how it counted towards my hours. No surprises on the day.",
     detail:
-      "Sample note for the layout. The learner was attending a periodic module. No course code, centre or approval is named, because none is claimed.",
-    attribution: "Sample learner, attending a Driver CPC module",
+      "I needed hours towards my periodic CPC. The module was explained clearly beforehand, including what it covered and how it fitted my five-year requirement, and the session itself was practical rather than a lecture from slides.",
+    attribution: "Sample learner, Driver CPC",
   },
 ];
 
