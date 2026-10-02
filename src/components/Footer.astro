@@ -2,6 +2,7 @@
 import BrandName from "./BrandName.astro";
 import DemoByline from "./DemoByline.astro";
 import { trainingLinks } from "../content/courses";
+import { legalLinks } from "../content/legal";
 import { nav, site } from "../config/site";
 import { httpsUrl } from "../lib/links";
 
@@ -13,7 +14,8 @@ const whatsapp = site.showWhatsApp ? httpsUrl(site.whatsappHref) : null;
 ---
 
 <footer class="site-footer">
-  <div class="wrap footer-grid">
+  <div class="wrap">
+  <div class="footer-grid">
     <div>
       <p class="footer-brand">
         <img src="/logo-mark-inverted.svg" width="36" height="36" alt="" />
@@ -72,5 +74,18 @@ const whatsapp = site.showWhatsApp ? httpsUrl(site.whatsappHref) : null;
         </li>
       </ul>
     </div>
+  </div>
+  <nav class="footer-legal" aria-labelledby="footer-legal">
+    <h2 class="footer-label" id="footer-legal">Legal</h2>
+    <ul>
+      {
+        legalLinks.map((item) => (
+          <li>
+            <a href={item.href}>{item.label}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
   </div>
 </footer>

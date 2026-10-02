@@ -12,6 +12,9 @@ Demonstration site and reusable template for the Webco Essential website package
 - `/about/`
 - `/reviews/`
 - `/contact/`
+- `/privacy/` example privacy policy
+- `/cookies/` example cookie policy
+- `/terms/` example website terms
 
 `/training/` redirects to `/hgv-training/` with a 301 in `public/.htaccess`. Category C1 is not part of the core sitemap.
 

@@ -1,5 +1,6 @@
 ---
 import { courses, unsureCourseId } from "../content/courses";
+import { legalPages } from "../content/legal";
 import { site } from "../config/site";
 import { enquiryAction } from "../lib/links";
 
@@ -60,11 +61,14 @@ const demo = action === null;
     <label for="enquiry-message">Message <span class="req">Required</span></label>
     <textarea id="enquiry-message" name="message" required></textarea>
   </div>
-  {
-    demo ? (
-      <p class="form-note">This demonstration form does not send messages. Nothing you type is stored.</p>
-    ) : null
-  }
+  <p class="form-note">
+    {
+      demo
+        ? "This demonstration form does not send messages. Nothing you type is stored. "
+        : "This form posts the enquiry to the configured handler. "
+    }
+    <a href={legalPages.privacy.href}>Privacy policy</a>.
+  </p>
   {
     demo ? (
       <p class="form-result" data-enquiry-result hidden tabindex="-1">

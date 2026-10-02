@@ -1,0 +1,100 @@
+---
+import PageHero from "../components/PageHero.astro";
+import Section from "../components/Section.astro";
+import { legalPages } from "../content/legal";
+import { site } from "../config/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { analyticsMeasurementId, httpsUrl, pageCrumbs } from "../lib/links";
+
+const crumbs = pageCrumbs([{ label: legalPages.cookies.label, href: legalPages.cookies.href }]);
+const analyticsOn = analyticsMeasurementId(site.analyticsId) !== null;
+const mapOn = httpsUrl(site.mapEmbedUrl) !== null;
+const reviewsOn = httpsUrl(site.googleReviewsUrl) !== null;
+---
+
+<BaseLayout
+  title="Cookie policy"
+  description="Example cookie policy for the Webco Essential demonstration. This site does not set cookies or load analytics, so it does not show a consent banner."
+  crumbs={crumbs}
+>
+  <PageHero
+    crumbs={crumbs}
+    eyebrow="Example"
+    title="Cookie policy"
+    lede="Example text for this demonstration website. It describes what this site actually stores. It is not legal advice, and it is not the cookie policy of a real business."
+  />
+
+  <Section id="meaning" title="What a cookie is" narrow={true}>
+    <p>
+      A cookie is a small file a website can store on your device. Similar storage includes local storage in the
+      browser. Some cookies are needed to run a service you asked for. Others are used to measure visits or to
+      advertise. Those others need a choice first.
+    </p>
+  </Section>
+
+  <Section id="this-site" title="What this site sets" band={true} narrow={true}>
+    <p>This demonstration does not set cookies, and it does not use local storage or session storage.</p>
+    <ul class="prose-list">
+      <li>There is no account and no basket, so no cookie is needed to keep you signed in</li>
+      <li>The enquiry form does not write what you type into storage. On this demonstration it does not send it either</li>
+      <li>The typefaces are files on this website, not a font service on another site</li>
+      <li>There is no consent banner, and no cookie that remembers a consent choice, because there is nothing optional to switch on</li>
+    </ul>
+  </Section>
+
+  <Section id="switched-off" title="Tools that are switched off" narrow={true}>
+    {
+      analyticsOn ? (
+        <p>
+          A Google Analytics measurement id is set in this copy of the site. That tool sets cookies and must not run
+          until a visitor has a way to accept or reject it. This example page is not that mechanism.
+        </p>
+      ) : (
+        <p>
+          The project can hold a Google Analytics measurement id. It is empty here, so no analytics script is included
+          and no analytics cookies are set.
+        </p>
+      )
+    }
+    {
+      mapOn ? (
+        <p>
+          A map embed is configured. An embedded map can set cookies belonging to the map provider. This demonstration
+          does not ask for consent before showing it, so a live site should not publish a map embed until that choice
+          exists.
+        </p>
+      ) : (
+        <p>
+          A map can be embedded later by adding an address in the site settings. No map is embedded now, so no map
+          cookies are set. The contact page shows a labelled placeholder instead.
+        </p>
+      )
+    }
+    {
+      reviewsOn ? (
+        <p>
+          A Google reviews link is configured. Following that link leaves this website. This site does not embed Google
+          reviews, and it does not set a reviews cookie.
+        </p>
+      ) : (
+        <p>No Google reviews profile is connected. The reviews page does not embed Google, and it shows no rating.</p>
+      )
+    }
+  </Section>
+
+  <Section id="leaving" title="When you leave this site" band={true} narrow={true}>
+    <p>
+      Phone, email and WhatsApp are links. If you use one, the next site or app is responsible for its own cookies.
+      This website does not set those cookies for you.
+    </p>
+    <p>
+      A live provider who later switches on analytics, advertising or an embedded map needs a way for visitors to
+      accept or reject those tools before they run. This demonstration does not include that banner, because those
+      tools are not running.
+    </p>
+    <p>
+      Also see the <a href={legalPages.privacy.href}>privacy policy</a> and the
+      <a href={legalPages.terms.href}>website terms</a>.
+    </p>
+  </Section>
+</BaseLayout>

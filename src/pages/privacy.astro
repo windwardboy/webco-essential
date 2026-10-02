@@ -1,0 +1,123 @@
+---
+import PageHero from "../components/PageHero.astro";
+import Section from "../components/Section.astro";
+import { courses } from "../content/courses";
+import { legalPages } from "../content/legal";
+import { site } from "../config/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { enquiryAction, pageCrumbs } from "../lib/links";
+
+const crumbs = pageCrumbs([{ label: legalPages.privacy.label, href: legalPages.privacy.href }]);
+const sendsEnquiry = enquiryAction(site.enquiryEndpoint) !== null;
+const courseNames = courses.map((course) => course.title).join(", ");
+---
+
+<BaseLayout
+  title="Privacy policy"
+  description="Example privacy policy for the Webco Essential demonstration. It describes the fictional enquiry form and states that this demo does not send or store what you type."
+  crumbs={crumbs}
+>
+  <PageHero
+    crumbs={crumbs}
+    eyebrow="Example"
+    title="Privacy policy"
+    lede="Example text for this demonstration website. It describes the fictional training provider shown here. It is not legal advice, and it is not the privacy policy of a real business."
+  />
+
+  <Section id="who" title="Who this page is about" narrow={true}>
+    <p>
+      Webco Essential is the name of this demonstration. The trainer, the town and the contact details are fictional.
+      Webco Media publishes the demonstration. That does not make Webco Media the training provider.
+    </p>
+    <p>
+      A real provider would name the organisation responsible for personal data. This page cannot do that, because no
+      real training business is operating this site. No company number, VAT number or registered office is shown,
+      because none belongs to this fictional provider.
+    </p>
+  </Section>
+
+  <Section id="enquiry" title="The enquiry form" band={true} narrow={true}>
+    <p>The contact page asks for:</p>
+    <ul class="prose-list">
+      <li>Name</li>
+      <li>
+        Phone, if you enter one. It is required only when you choose phone
+        {site.showWhatsApp ? " or WhatsApp" : ""} as the way to reply
+      </li>
+      <li>Email</li>
+      <li>Course: {courseNames}, or not sure yet</li>
+      <li>
+        Preferred contact method: phone, email{site.showWhatsApp ? ", or WhatsApp" : ""}
+      </li>
+      <li>Message</li>
+    </ul>
+    {
+      sendsEnquiry ? (
+        <p>
+          This copy of the site is set to post those fields to a configured form address. This project does not include
+          that handler, so this page cannot say who would read the message, how long it would be kept, or where it would
+          be stored. A live provider has to add that before the form is used.
+        </p>
+      ) : (
+        <p>
+          On this demonstration the form is not connected to a server. Submitting it does not send the message. Nothing
+          you type is stored in a cookie or anywhere else on the site. The words stay in the form on your screen until
+          you leave the page. A note on the form says the same thing.
+        </p>
+      )
+    }
+    <p>
+      If you open the contact page from a course button, the address can include the course name so the form selects it
+      for you. That is only so you do not have to choose it again. It is not saved.
+    </p>
+  </Section>
+
+  <Section id="contact-routes" title="Phone, email and WhatsApp" narrow={true}>
+    <p>
+      The phone number on this site is {site.phoneDisplay}. The email address is {site.email}.
+      {site.showWhatsApp ? ` The WhatsApp number is ${site.whatsappDisplay}.` : ""}
+      These are placeholders. {site.location.town} and {site.location.county} are placeholders too.
+    </p>
+    <p>
+      Choosing a phone link, an email link or a WhatsApp link leaves this website and opens the app on your device.
+      This site does not receive that call, email or chat, and it does not keep a copy.
+    </p>
+  </Section>
+
+  <Section id="not-collected" title="What this site does not do" band={true} narrow={true}>
+    <ul class="prose-list">
+      <li>It does not ask you to create an account</li>
+      <li>It does not take payment</li>
+      <li>It does not add you to a mailing list</li>
+      <li>It does not run analytics or advertising</li>
+      <li>The reviews are sample text, not comments collected from learners</li>
+    </ul>
+    <p>
+      The <a href={legalPages.cookies.href}>cookie policy</a> says what this website stores on your device.
+    </p>
+  </Section>
+
+  <Section id="hosting" title="Serving the pages" narrow={true}>
+    <p>
+      The pages are static files. This project does not run a database. Whoever hosts a copy of the site may keep
+      ordinary server logs, such as an IP address and the page requested. This demonstration does not name a host,
+      because that depends on where a copy is published.
+    </p>
+  </Section>
+
+  <Section id="rights" title="Rights, as an example" band={true} narrow={true}>
+    <p>
+      People in the UK have rights over personal data a real organisation holds, including access, correction, deletion,
+      restriction and objection, and the right to complain to the Information Commissioner's Office. This demonstration
+      does not hold enquiry records, so there is nothing here to retrieve or delete.
+    </p>
+    <p>
+      The contact details above are fictional. They are not a route to a real privacy contact. A live provider replaces
+      this page with their own notice, including who to write to and how long they keep an enquiry.
+    </p>
+    <p>
+      Also see the <a href={legalPages.cookies.href}>cookie policy</a> and the
+      <a href={legalPages.terms.href}>website terms</a>.
+    </p>
+  </Section>
+</BaseLayout>

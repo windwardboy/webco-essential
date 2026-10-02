@@ -1,0 +1,79 @@
+---
+import PageHero from "../components/PageHero.astro";
+import Section from "../components/Section.astro";
+import { legalPages } from "../content/legal";
+import { site } from "../config/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { enquiryAction, pageCrumbs } from "../lib/links";
+
+const crumbs = pageCrumbs([{ label: legalPages.terms.label, href: legalPages.terms.href }]);
+const sendsEnquiry = enquiryAction(site.enquiryEndpoint) !== null;
+---
+
+<BaseLayout
+  title="Website terms"
+  description="Example website terms for the Webco Essential demonstration of a fictional HGV training provider. Not a training contract and not legal advice."
+  crumbs={crumbs}
+>
+  <PageHero
+    crumbs={crumbs}
+    eyebrow="Example"
+    title="Website terms"
+    lede="Example terms for using this demonstration website. They are not a training contract, not a set of booking conditions, and not legal advice for a real business."
+  />
+
+  <Section id="about-terms" title="What these terms cover" narrow={true}>
+    <p>
+      Webco Essential is a fictional provider on a demonstration built by Webco Media. The courses, reviews, town and
+      contact details are examples. {site.phoneDisplay}, {site.email} and {site.location.town} are placeholders.
+    </p>
+    <p>
+      These terms describe the sample website. They do not create a contract for driver training, and they do not name
+      a company number, a VAT number or a registered office. A real provider replaces this page with terms written for
+      their own business.
+    </p>
+  </Section>
+
+  <Section id="training" title="Training information" band={true} narrow={true}>
+    <p>
+      The pages explain Category C, Category C+E and Driver CPC in general terms. They are not an official statement of
+      licence rules, and they do not confirm that you are eligible. Duration and price are not published. Nothing on
+      the site books a test or reserves a course date.
+    </p>
+    <p>
+      {
+        sendsEnquiry
+          ? "Sending the enquiry form only passes on the message. It does not confirm a place."
+          : "The enquiry form on this demonstration does not send a message and does not reserve a place."
+      }
+    </p>
+  </Section>
+
+  <Section id="using" title="Using the website" narrow={true}>
+    <p>
+      You may read the pages and use the links. Please do not attempt to misuse the form, interfere with the site, or
+      present the sample reviews and placeholder contact details as a real business.
+    </p>
+    <p>
+      The design and sample text are part of the Webco Essential demonstration. Course names such as Category C are
+      ordinary descriptions of licence categories, not a claim of accreditation. This site does not display an
+      accreditation, a pass rate or a review score.
+    </p>
+  </Section>
+
+  <Section id="links" title="Links and responsibility" band={true} narrow={true}>
+    <p>
+      A link to phone, email or WhatsApp takes you out of this website. What happens next is outside this
+      demonstration. Sample pages can be incomplete on purpose, including the map, which is a placeholder until a real
+      provider adds one.
+    </p>
+    <p>
+      This demonstration is a showcase. It is not a promise that a particular course, date, vehicle or result is
+      available. A live provider is responsible for their own information, their own enquiries, and their own terms.
+    </p>
+    <p>
+      Also see the <a href={legalPages.privacy.href}>privacy policy</a> and the
+      <a href={legalPages.cookies.href}>cookie policy</a>.
+    </p>
+  </Section>
+</BaseLayout>
