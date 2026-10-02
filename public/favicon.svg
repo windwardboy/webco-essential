@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Webco Essential">
-  <rect width="32" height="32" rx="7" fill="#0e2233"/>
-  <path d="M9.5 9l7 7-7 7M16.5 9l7 7-7 7" fill="none" stroke="#f6b21a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Webco Essential">
+  <rect width="64" height="64" rx="14" fill="#0c1d2d"/>
+  <path d="M4 64C12 50 28 44 44 38c6-2 11-4 15-6l1 5c-5 2-9 5-14 8-12 7-12 13-6 19H4Z" fill="#ffffff"/>
+  <path d="M22 64c2-10 16-17 36-30" fill="none" stroke="#8aa3b8" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 4"/>
+  <path d="M18 11l10 10-10 10M33 11l10 10-10 10" fill="none" stroke="#ffb000" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

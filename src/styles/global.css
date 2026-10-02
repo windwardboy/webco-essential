@@ -265,22 +265,20 @@ a:hover {
 
 .logo img {
   display: block;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 8px;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .logo-word {
-  font-family: var(--display);
-  font-size: 1.45rem;
-  font-weight: 600;
-  letter-spacing: 0;
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
   line-height: 1;
   white-space: nowrap;
 }
 
 .logo-strong {
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .nav-mobile {
@@ -1958,16 +1956,16 @@ textarea:user-invalid {
   align-items: center;
   gap: 0.7rem;
   margin-bottom: 1rem;
-  font-family: var(--display);
-  font-size: 1.6rem;
-  font-weight: 700;
   line-height: 1;
 }
 
+.footer-brand .logo-word {
+  font-size: 1.35rem;
+}
+
 .footer-brand img {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 7px;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .footer-label {
