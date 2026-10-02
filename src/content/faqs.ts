@@ -78,7 +78,8 @@ export const faqs: Record<string, readonly FaqItem[]> = {
     },
     {
       question: "What will I be driving?",
-      answer: "An articulated lorry or a drawbar combination, depending on the entitlement you need.",
+      answer:
+        "You train in our articulated unit and trailer. The Category C+E licence covers articulated lorries and drawbar combinations.",
     },
     {
       question: "How long does Category C+E take?",

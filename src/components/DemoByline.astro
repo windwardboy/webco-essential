@@ -1,0 +1,20 @@
+---
+import { site } from "../config/site";
+import { httpsUrl } from "../lib/links";
+
+const credit = "Webco Media";
+const href = httpsUrl(site.webcoMediaUrl);
+const creditAt = site.demoLine.indexOf(credit);
+---
+
+{
+  href && creditAt >= 0 ? (
+    <>
+      {site.demoLine.slice(0, creditAt)}
+      <a href={href}>{credit}</a>
+      {site.demoLine.slice(creditAt + credit.length)}
+    </>
+  ) : (
+    site.demoLine
+  )
+}

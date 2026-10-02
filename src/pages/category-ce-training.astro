@@ -6,7 +6,7 @@ import PageHero from "../components/PageHero.astro";
 import RelatedTraining from "../components/RelatedTraining.astro";
 import Section from "../components/Section.astro";
 import TestimonialList from "../components/TestimonialList.astro";
-import { categoryCe, durationNote, priceNote } from "../content/courses";
+import { categoryCe, courseById, durationNote, enquiryHref, priceNote, trainingOverviewPath } from "../content/courses";
 import { faqs } from "../content/faqs";
 import { testimonialsFor } from "../content/testimonials";
 import { trustPoints } from "../content/trust";
@@ -14,9 +14,11 @@ import { site } from "../config/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { pageCrumbs } from "../lib/links";
 
+const course = courseById("category-ce");
+const categoryCCourse = courseById("category-c");
 const crumbs = pageCrumbs([
-  { label: "HGV training", href: "/hgv-training/" },
-  { label: "Category C+E", href: "/category-ce-training/" },
+  { label: "HGV training", href: trainingOverviewPath },
+  { label: course.navLabel, href: course.path },
 ]);
 ---
 
@@ -32,7 +34,7 @@ const crumbs = pageCrumbs([
     lede="Trailer training for articulated lorries and drawbar combinations. This page explains the licence and the practical work involved."
   >
     <div class="actions">
-      <a class="button" href="/contact/?course=category-ce#enquiry">Enquire about Category C+E</a>
+      <a class="button" href={enquiryHref(course.id)}>Enquire about {course.title}</a>
       <a class="button button-quiet" href={site.phoneHref}>Call {site.phoneDisplay}</a>
     </div>
   </PageHero>
@@ -47,7 +49,7 @@ const crumbs = pageCrumbs([
   <Section id="who" title="Who it is for" intro={categoryCe.who} narrow={true}>
     <p>
       If you're still moving up from a car licence, start with
-      <a href="/category-c-training/">Category C training</a>.
+      <a href={categoryCCourse.path}>{categoryCCourse.title} training</a>.
     </p>
   </Section>
 
@@ -83,7 +85,7 @@ const crumbs = pageCrumbs([
 
   <Section id="price" title="Price and quotes" intro={priceNote} band={true} narrow={true}>
     <div class="actions">
-      <a class="button" href="/contact/?course=category-ce#enquiry">Ask for a Category C+E quote</a>
+      <a class="button" href={enquiryHref(course.id)}>Ask for a {course.title} quote</a>
     </div>
   </Section>
 
@@ -115,7 +117,7 @@ const crumbs = pageCrumbs([
 
   <FaqList id="faq" title="Common questions" items={faqs["category-ce"]} band={true} />
 
-  <Section id="related" title="Other training" intro="The rest of our courses.">
+  <Section id="related" title="Other training" intro="The training overview and the other courses.">
     <RelatedTraining excludeId="category-ce" />
   </Section>
 
@@ -123,7 +125,7 @@ const crumbs = pageCrumbs([
     id="cta"
     title="Enquire about Category C+E"
     text="Tell us whether you already hold Category C, and how you'd like us to get in touch."
-    primaryHref="/contact/?course=category-ce#enquiry"
-    primaryLabel="Enquire about Category C+E"
+    primaryHref={enquiryHref(course.id)}
+    primaryLabel={`Enquire about ${course.title}`}
   />
 </BaseLayout>

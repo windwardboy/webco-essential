@@ -10,18 +10,14 @@ const pathname = Astro.url.pathname;
     nav.map((item) => {
       const children = item.children ?? [];
       const sectionCurrent = children.some((child) => isCurrentPath(pathname, child.href));
+      const itemCurrent = isCurrentPath(pathname, item.href) && !sectionCurrent;
       return (
         <li class:list={[children.length > 0 && "nav-sub"]}>
-          <a
-            href={item.href}
-            aria-current={isCurrentPath(pathname, item.href) ? "page" : undefined}
-            aria-haspopup={children.length > 0 ? "true" : undefined}
-            class:list={[sectionCurrent && "is-section"]}
-          >
+          <a href={item.href} aria-current={itemCurrent ? "page" : undefined} class:list={[sectionCurrent && "is-section"]}>
             {item.label}
           </a>
           {children.length > 0 ? (
-            <ul class="submenu">
+            <ul class="submenu" aria-label={item.label}>
               {children.map((child) => (
                 <li>
                   <a href={child.href} aria-current={isCurrentPath(pathname, child.href) ? "page" : undefined}>

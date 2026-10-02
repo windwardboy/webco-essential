@@ -6,6 +6,7 @@ import TestimonialList from "../components/TestimonialList.astro";
 import { aboutIntro, aboutSections } from "../content/about";
 import { testimonials } from "../content/testimonials";
 import { trustPoints } from "../content/trust";
+import { trainingOverviewPath } from "../content/courses";
 import { site } from "../config/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { pageCrumbs } from "../lib/links";
@@ -20,7 +21,7 @@ const crumbs = pageCrumbs([{ label: "About", href: "/about/" }]);
 >
   <PageHero crumbs={crumbs} eyebrow={aboutIntro.eyebrow} title={aboutIntro.title} lede={aboutIntro.lede}>
     <div class="actions">
-      <a class="button" href="/hgv-training/">View HGV training</a>
+      <a class="button" href={trainingOverviewPath}>View HGV training</a>
       <a class="button button-quiet" href="/contact/#enquiry">Enquire now</a>
     </div>
   </PageHero>

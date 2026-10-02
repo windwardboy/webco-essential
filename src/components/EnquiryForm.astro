@@ -1,5 +1,5 @@
 ---
-import { courses } from "../content/courses";
+import { courses, unsureCourseId } from "../content/courses";
 import { site } from "../config/site";
 import { enquiryAction } from "../lib/links";
 
@@ -21,7 +21,7 @@ const demo = action === null;
   </div>
   <div class="field-row">
     <div class="field">
-      <label for="enquiry-phone">Phone <span class="req">Optional</span></label>
+      <label for="enquiry-phone">Phone <span class="req" data-phone-requirement>Optional</span></label>
       <input id="enquiry-phone" name="phone" type="tel" autocomplete="tel" />
     </div>
     <div class="field">
@@ -34,7 +34,7 @@ const demo = action === null;
     <select id="enquiry-course" name="course" required>
       <option value="" selected disabled>Choose a course</option>
       {courses.map((course) => <option value={course.id}>{course.title}</option>)}
-      <option value="not-sure">Not sure yet</option>
+      <option value={unsureCourseId}>Not sure yet</option>
     </select>
   </div>
   <fieldset class="contact-method">
@@ -65,9 +65,13 @@ const demo = action === null;
       <p class="form-note">This demonstration form does not send messages. Nothing you type is stored.</p>
     ) : null
   }
-  <p class="form-result" data-enquiry-result hidden tabindex="-1">
-    This is a demonstration. Your enquiry was not sent.
-  </p>
+  {
+    demo ? (
+      <p class="form-result" data-enquiry-result hidden tabindex="-1">
+        This is a demonstration. Your enquiry was not sent.
+      </p>
+    ) : null
+  }
   <div class="form-actions">
     <button class="button" type="submit">Send enquiry</button>
   </div>
@@ -84,13 +88,34 @@ const demo = action === null;
       select.value = course;
     }
 
+    const phone = form.querySelector("input[name='phone']");
+    const phoneRequirement = form.querySelector("[data-phone-requirement]");
+    const syncPhoneRequirement = () => {
+      if (!(phone instanceof HTMLInputElement)) return;
+      const selected = form.querySelector("input[name='contact_method']:checked");
+      const needsPhone =
+        selected instanceof HTMLInputElement && (selected.value === "phone" || selected.value === "whatsapp");
+      phone.required = needsPhone;
+      if (phoneRequirement) phoneRequirement.textContent = needsPhone ? "Required" : "Optional";
+      phone.setCustomValidity(
+        needsPhone && phone.value.trim() === "" ? "Enter a phone number so we can contact you that way." : "",
+      );
+    };
+
+    if (phone instanceof HTMLInputElement) phone.addEventListener("input", syncPhoneRequirement);
+    form.querySelectorAll("input[name='contact_method']").forEach((input) => {
+      input.addEventListener("change", syncPhoneRequirement);
+    });
+
     form.addEventListener("submit", (event) => {
-      if (form.dataset.demo !== "true") return;
-      event.preventDefault();
+      syncPhoneRequirement();
       if (!form.checkValidity()) {
+        event.preventDefault();
         form.reportValidity();
         return;
       }
+      if (form.dataset.demo !== "true") return;
+      event.preventDefault();
       const result = form.querySelector("[data-enquiry-result]");
       if (result instanceof HTMLElement) {
         result.hidden = false;

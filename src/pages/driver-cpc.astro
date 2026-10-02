@@ -5,15 +5,18 @@ import LocationPanel from "../components/LocationPanel.astro";
 import PageHero from "../components/PageHero.astro";
 import RelatedTraining from "../components/RelatedTraining.astro";
 import Section from "../components/Section.astro";
-import { cpcPriceNote, driverCpc } from "../content/courses";
+import { courseById, cpcPriceNote, driverCpc, enquiryHref, trainingOverviewPath } from "../content/courses";
 import { faqs } from "../content/faqs";
 import { site } from "../config/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { pageCrumbs } from "../lib/links";
 
+const course = courseById("driver-cpc");
+const categoryCCourse = courseById("category-c");
+const categoryCeCourse = courseById("category-ce");
 const crumbs = pageCrumbs([
-  { label: "HGV training", href: "/hgv-training/" },
-  { label: "Driver CPC", href: "/driver-cpc/" },
+  { label: "HGV training", href: trainingOverviewPath },
+  { label: course.navLabel, href: course.path },
 ]);
 ---
 
@@ -25,19 +28,19 @@ const crumbs = pageCrumbs([
   <PageHero
     crumbs={crumbs}
     eyebrow={`Driver CPC · ${site.location.town}`}
-    title="Driver CPC"
+    title="Driver CPC training"
     lede="Periodic training for professional lorry and bus drivers who need to keep their Driver Qualification Card up to date. Driver CPC is not a vehicle category."
   >
     <div class="actions">
-      <a class="button" href="/contact/?course=driver-cpc#enquiry">Enquire about Driver CPC</a>
+      <a class="button" href={enquiryHref(course.id)}>Enquire about {course.title}</a>
       <a class="button button-quiet" href={site.phoneHref}>Call {site.phoneDisplay}</a>
     </div>
   </PageHero>
 
   <Section id="what" title="What Driver CPC is" intro={driverCpc.what} band={true} narrow={true}>
     <p>
-      The vehicle licences are <a href="/category-c-training/">Category C</a> and
-      <a href="/category-ce-training/">Category C+E</a>.
+      The vehicle licences are <a href={categoryCCourse.path}>{categoryCCourse.title}</a> and
+      <a href={categoryCeCourse.path}>{categoryCeCourse.title}</a>.
     </p>
   </Section>
 
@@ -82,14 +85,14 @@ const crumbs = pageCrumbs([
 
   <Section id="price" title="Price and quotes" intro={cpcPriceNote} narrow={true}>
     <div class="actions">
-      <a class="button" href="/contact/?course=driver-cpc#enquiry">Ask for a Driver CPC quote</a>
+      <a class="button" href={enquiryHref(course.id)}>Ask for a {course.title} quote</a>
     </div>
   </Section>
 
   <LocationPanel id="location" title="Training location" band={true} />
   <FaqList id="faq" title="Common questions" items={faqs["driver-cpc"]} />
 
-  <Section id="related" title="Other training" intro="If you need a vehicle licence rather than CPC." band={true}>
+  <Section id="related" title="Other training" intro="The training overview and the vehicle licences." band={true}>
     <RelatedTraining excludeId="driver-cpc" />
   </Section>
 
@@ -97,7 +100,7 @@ const crumbs = pageCrumbs([
     id="cta"
     title="Enquire about Driver CPC"
     text="Tell us you're asking about periodic training, and how you'd like us to get in touch."
-    primaryHref="/contact/?course=driver-cpc#enquiry"
-    primaryLabel="Enquire about Driver CPC"
+    primaryHref={enquiryHref(course.id)}
+    primaryLabel={`Enquire about ${course.title}`}
   />
 </BaseLayout>

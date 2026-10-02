@@ -1,13 +1,15 @@
 ---
+import BrandName from "./BrandName.astro";
+import DemoByline from "./DemoByline.astro";
 import { trainingLinks } from "../content/courses";
-import { site } from "../config/site";
+import { nav, site } from "../config/site";
+import { httpsUrl } from "../lib/links";
 
 const pageLinks = [
   { href: "/", label: "Home" },
-  { href: "/about/", label: "About" },
-  { href: "/reviews/", label: "Reviews" },
-  { href: "/contact/", label: "Contact" },
+  ...nav.flatMap((item) => (item.children ? [] : [{ href: item.href, label: item.label }])),
 ];
+const whatsapp = site.showWhatsApp ? httpsUrl(site.whatsappHref) : null;
 ---
 
 <footer class="site-footer">
@@ -15,21 +17,19 @@ const pageLinks = [
     <div>
       <p class="footer-brand">
         <img src="/logo-mark-inverted.svg" width="36" height="36" alt="" />
-        <span class="logo-word"><span class="logo-strong">Webco</span> Essential</span>
+        <BrandName />
       </p>
       <p>Category C, Category C+E and Driver CPC training from one local base.</p>
       <p>
         <strong>{site.location.town}, {site.location.county}</strong>
       </p>
       <p class="example-caption">
-        Demonstration website by{" "}
-        {site.webcoMediaUrl ? <a href={site.webcoMediaUrl}>Webco Media</a> : "Webco Media"}. The business, location
-        and contact details are fictional.
+        <DemoByline />. The business, location and contact details are fictional.
       </p>
     </div>
     <div>
-      <p class="footer-label">Training</p>
-      <ul class="footer-nav">
+      <h2 class="footer-label" id="footer-training">Training</h2>
+      <ul class="footer-nav" aria-labelledby="footer-training">
         {
           trainingLinks.map((item) => (
             <li>
@@ -40,8 +40,8 @@ const pageLinks = [
       </ul>
     </div>
     <div>
-      <p class="footer-label">Pages</p>
-      <ul class="footer-nav">
+      <h2 class="footer-label" id="footer-pages">Pages</h2>
+      <ul class="footer-nav" aria-labelledby="footer-pages">
         {
           pageLinks.map((item) => (
             <li>
@@ -52,8 +52,8 @@ const pageLinks = [
       </ul>
     </div>
     <div>
-      <p class="footer-label">Contact</p>
-      <ul class="footer-nav">
+      <h2 class="footer-label" id="footer-contact">Contact</h2>
+      <ul class="footer-nav" aria-labelledby="footer-contact">
         <li>
           <a href={site.phoneHref}>{site.phoneDisplay}</a>
         </li>
@@ -61,12 +61,10 @@ const pageLinks = [
           <a href={`mailto:${site.email}`}>{site.email}</a>
         </li>
         {
-          site.showWhatsApp ? (
+          whatsapp ? (
             <li>
-              <a href={site.whatsappHref} rel="noopener noreferrer">
-                WhatsApp
-              </a>
-                </li>
+              <a href={whatsapp} rel="noopener noreferrer">WhatsApp {site.whatsappDisplay}</a>
+            </li>
           ) : null
         }
         <li>

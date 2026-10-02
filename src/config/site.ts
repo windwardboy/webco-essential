@@ -1,4 +1,4 @@
-import { trainingLinks } from "../content/courses";
+import { trainingLinks, trainingOverviewPath } from "../content/courses";
 
 /**
  * Site-wide facts for an Essential client site.
@@ -28,8 +28,7 @@ export const site = {
   location: {
     town: "Example Town",
     county: "Example County",
-    summary:
-      "All our training runs from one base. We share the full address and directions when your training is booked.",
+    summary: "All our training runs from one base.",
     addressLines: [] as readonly string[],
     /** Shown when no street address is configured. */
     addressNote: "We share the full address and directions when your training is booked.",
@@ -76,7 +75,7 @@ export type NavItem = {
 };
 
 export const nav: readonly NavItem[] = [
-  { href: "/hgv-training/", label: "HGV training", children: trainingLinks },
+  { href: trainingOverviewPath, label: "HGV training", children: trainingLinks },
   { href: "/about/", label: "About" },
   { href: "/reviews/", label: "Reviews" },
   { href: "/contact/", label: "Contact" },

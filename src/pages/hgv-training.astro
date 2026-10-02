@@ -5,14 +5,14 @@ import LocationPanel from "../components/LocationPanel.astro";
 import PageHero from "../components/PageHero.astro";
 import ProcessSteps from "../components/ProcessSteps.astro";
 import Section from "../components/Section.astro";
-import { courses, licenceComparison, priceNote, whichLicence } from "../content/courses";
+import { courses, enquiryHref, licenceComparison, priceNote, trainingOverviewPath, unsureCourseId, whichLicence } from "../content/courses";
 import { faqs } from "../content/faqs";
 import { trainingJourney } from "../content/process";
 import { site } from "../config/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { pageCrumbs } from "../lib/links";
 
-const crumbs = pageCrumbs([{ label: "HGV training", href: "/hgv-training/" }]);
+const crumbs = pageCrumbs([{ label: "HGV training", href: trainingOverviewPath }]);
 ---
 
 <BaseLayout
@@ -28,7 +28,7 @@ const crumbs = pageCrumbs([{ label: "HGV training", href: "/hgv-training/" }]);
   >
     <div class="actions">
       <a class="button" href="/contact/#enquiry">Enquire now</a>
-      <a class="button button-quiet" href="/hgv-training/#which-licence">Which licence?</a>
+      <a class="button button-quiet" href={`${trainingOverviewPath}#which-licence`}>Which licence?</a>
     </div>
   </PageHero>
 
@@ -38,8 +38,9 @@ const crumbs = pageCrumbs([{ label: "HGV training", href: "/hgv-training/" }]);
     intro="Three courses, each with its own page for the detail."
     band={true}
   >
-    <div class="table-scroll">
+    <div class="table-scroll" tabindex="0" role="region" aria-labelledby="comparison">
       <table class="compare">
+        <caption class="visually-hidden">Licence comparison</caption>
         <thead>
           <tr>
             <th scope="col">Course</th>
@@ -79,7 +80,7 @@ const crumbs = pageCrumbs([{ label: "HGV training", href: "/hgv-training/" }]);
       }
     </ul>
     <div class="actions">
-      <a class="button" href="/contact/?course=not-sure#enquiry">Ask which licence fits</a>
+      <a class="button" href={enquiryHref(unsureCourseId)}>Ask which licence fits</a>
     </div>
   </Section>
 

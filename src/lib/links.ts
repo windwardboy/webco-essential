@@ -13,8 +13,15 @@ export function isCurrentPath(pathname: string, href: string): boolean {
 
 /** Accept only a same-site path or an https URL as the form action. */
 export function enquiryAction(endpoint: string): string | null {
-  if (endpoint.startsWith("/") || endpoint.startsWith("https://")) return endpoint;
+  if ((endpoint.startsWith("/") && !endpoint.startsWith("//") && !endpoint.startsWith("/\\")) || endpoint.startsWith("https://")) {
+    return endpoint;
+  }
   return null;
+}
+
+/** JSON-LD safe to embed in a script element. */
+export function jsonLd(data: unknown): string {
+  return JSON.stringify(data).replace(/</g, "\\u003c");
 }
 
 /** GA4 measurement ids only. Anything else is ignored so the layout stays script-free. */

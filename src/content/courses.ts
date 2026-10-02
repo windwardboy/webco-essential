@@ -44,30 +44,48 @@ export const courses: readonly Course[] = [
   },
 ];
 
+export const trainingOverviewPath = "/hgv-training/";
+
+/** Enquiry value for drivers who have not chosen a course. Not a course id. */
+export const unsureCourseId = "not-sure";
+
+export function courseById(id: string): Course {
+  const course = courses.find((item) => item.id === id);
+  if (!course) throw new Error(`Unknown course id: ${id}`);
+  return course;
+}
+
+export function enquiryHref(courseId: string): string {
+  if (courseId !== unsureCourseId && !courses.some((course) => course.id === courseId)) {
+    throw new Error(`Unknown course id: ${courseId}`);
+  }
+  return `/contact/?course=${encodeURIComponent(courseId)}#enquiry`;
+}
+
 export const trainingLinks: readonly { href: string; label: string }[] = [
-  { href: "/hgv-training/", label: "HGV training overview" },
+  { href: trainingOverviewPath, label: "HGV training overview" },
   ...courses.map((course) => ({ href: course.path, label: course.navLabel })),
 ];
 
 export const licenceComparison = [
   {
     id: "category-c",
-    label: "Category C",
-    path: "/category-c-training/",
+    label: courseById("category-c").title,
+    path: courseById("category-c").path,
     covers: "Rigid lorries over 3.5 tonnes.",
     startingPoint: "Usually a category B car licence, plus a lorry medical and the theory tests.",
   },
   {
     id: "category-ce",
-    label: "Category C+E",
-    path: "/category-ce-training/",
+    label: courseById("category-ce").title,
+    path: courseById("category-ce").path,
     covers: "Articulated lorries and drawbar combinations.",
     startingPoint: "Category C is the usual licence held before this training.",
   },
   {
     id: "driver-cpc",
-    label: "Driver CPC",
-    path: "/driver-cpc/",
+    label: courseById("driver-cpc").title,
+    path: courseById("driver-cpc").path,
     covers: "A professional qualification for lorry and bus drivers. It is not a vehicle category.",
     startingPoint: "Depends on whether you need initial or periodic CPC.",
   },
@@ -75,19 +93,19 @@ export const licenceComparison = [
 
 export const whichLicence = [
   {
-    title: "Category C",
+    title: courseById("category-c").title,
     text: "The usual route onto a rigid lorry if you hold a car licence and want to drive goods vehicles over 3.5 tonnes.",
-    href: "/category-c-training/",
+    href: courseById("category-c").path,
   },
   {
-    title: "Category C+E",
+    title: courseById("category-ce").title,
     text: "The trailer licence, for articulated lorries and drawbar combinations, once you hold Category C.",
-    href: "/category-ce-training/",
+    href: courseById("category-ce").path,
   },
   {
-    title: "Driver CPC",
-    text: "The professional qualification that goes alongside your licence for many paid driving jobs. It doesn't replace Category C or C+E.",
-    href: "/driver-cpc/",
+    title: courseById("driver-cpc").title,
+    text: "The professional qualification that goes alongside your licence for many paid driving jobs. It doesn't replace Category C or Category C+E.",
+    href: courseById("driver-cpc").path,
   },
 ] as const;
 

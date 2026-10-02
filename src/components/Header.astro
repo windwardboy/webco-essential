@@ -1,20 +1,20 @@
 ---
+import BrandName from "./BrandName.astro";
+import DemoByline from "./DemoByline.astro";
 import NavLinks from "./NavLinks.astro";
-import { site } from "../config/site";
 ---
 
 <a class="skip" href="#content">Skip to content</a>
 <div class="demo-bar">
   <p class="wrap">
-    Demonstration website by{" "}
-    {site.webcoMediaUrl ? <a href={site.webcoMediaUrl}>Webco Media</a> : "Webco Media"}. The business, contact details and reviews are fictional.
+    <DemoByline />. The business, contact details and reviews are fictional.
   </p>
 </div>
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="logo" href="/">
       <img src="/favicon.svg" width="36" height="36" alt="" />
-      <span class="logo-word"><span class="logo-strong">Webco</span> Essential</span>
+      <BrandName />
     </a>
     <details class="nav-mobile">
       <summary class="nav-summary">Menu</summary>

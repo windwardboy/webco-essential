@@ -1,0 +1,8 @@
+---
+import { site } from "../config/site";
+
+const [lead, ...rest] = site.name.split(" ");
+const tail = rest.join(" ");
+---
+
+<span class="logo-word"><span class="logo-strong">{lead}</span>{tail ? ` ${tail}` : ""}</span>

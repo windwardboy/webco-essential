@@ -4,6 +4,7 @@ import PageHero from "../components/PageHero.astro";
 import Section from "../components/Section.astro";
 import TestimonialList from "../components/TestimonialList.astro";
 import { testimonials } from "../content/testimonials";
+import { trainingOverviewPath } from "../content/courses";
 import { site } from "../config/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { httpsUrl, pageCrumbs } from "../lib/links";
@@ -25,7 +26,7 @@ const googleReviews = httpsUrl(site.googleReviewsUrl);
   >
     <div class="actions">
       <a class="button" href="/contact/#enquiry">Enquire now</a>
-      <a class="button button-quiet" href="/hgv-training/">View HGV training</a>
+      <a class="button button-quiet" href={trainingOverviewPath}>View HGV training</a>
     </div>
   </PageHero>
 

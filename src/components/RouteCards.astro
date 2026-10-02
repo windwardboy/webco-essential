@@ -1,6 +1,6 @@
 ---
 import CourseCard from "./CourseCard.astro";
-import { courses } from "../content/courses";
+import { courses, enquiryHref, trainingOverviewPath, unsureCourseId } from "../content/courses";
 ---
 
 <section class="block band" aria-labelledby="routes">
@@ -15,9 +15,9 @@ import { courses } from "../content/courses";
       {courses.map((course) => <CourseCard course={course} />)}
       <li class="card">
         <p class="card-kicker">Not sure?</p>
-        <h3><a href="/hgv-training/#which-licence">Compare the courses</a></h3>
+        <h3><a href={`${trainingOverviewPath}#which-licence`}>Compare the courses</a></h3>
         <p>Category C, Category C+E and Driver CPC, side by side.</p>
-        <a class="text-link" href="/contact/?course=not-sure#enquiry">Ask which licence fits</a>
+        <a class="text-link" href={enquiryHref(unsureCourseId)}>Ask which licence fits</a>
       </li>
     </ul>
   </div>

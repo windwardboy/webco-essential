@@ -22,6 +22,7 @@ const { id, title, intro, steps, band = false } = Astro.props;
       {
         steps.map((step) => (
           <li>
+            <span class="step-index" aria-hidden="true"></span>
             <h3>{step.title}</h3>
             <p>{step.text}</p>
           </li>

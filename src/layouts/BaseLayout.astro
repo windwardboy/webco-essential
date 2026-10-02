@@ -5,7 +5,7 @@ import "@fontsource/barlow-semi-condensed/700.css";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import { site } from "../config/site";
-import { analyticsMeasurementId, canonicalUrl, type Crumb } from "../lib/links";
+import { analyticsMeasurementId, canonicalUrl, jsonLd, type Crumb } from "../lib/links";
 import "../styles/global.css";
 
 interface Props {
@@ -23,7 +23,7 @@ const website = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: site.name,
-  url: site.url,
+  url: canonicalUrl("/"),
   description: site.description,
 };
 const breadcrumb =
@@ -63,8 +63,8 @@ const breadcrumb =
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:locale" content="en_GB" />
-    <script type="application/ld+json" set:html={JSON.stringify(website)} />
-    {breadcrumb ? <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} /> : null}
+    <script type="application/ld+json" set:html={jsonLd(website)} />
+    {breadcrumb ? <script type="application/ld+json" set:html={jsonLd(breadcrumb)} /> : null}
     {
       analyticsId ? (
         <script async src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`}></script>
@@ -85,7 +85,7 @@ const breadcrumb =
   </head>
   <body class="site-essential">
     <Header />
-    <main id="content">
+    <main id="content" tabindex="-1">
       <slot />
     </main>
     <Footer />

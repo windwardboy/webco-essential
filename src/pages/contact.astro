@@ -10,6 +10,7 @@ import { httpsUrl, pageCrumbs } from "../lib/links";
 
 const crumbs = pageCrumbs([{ label: "Contact", href: "/contact/" }]);
 const mapUrl = httpsUrl(site.mapEmbedUrl);
+const whatsapp = site.showWhatsApp ? httpsUrl(site.whatsappHref) : null;
 ---
 
 <BaseLayout
@@ -43,9 +44,9 @@ const mapUrl = httpsUrl(site.mapEmbedUrl);
             <a href={`mailto:${site.email}`}>{site.email}</a>
           </li>
           {
-            site.showWhatsApp ? (
+            whatsapp ? (
               <li>
-                <a href={site.whatsappHref} rel="noopener noreferrer">
+                <a href={whatsapp} rel="noopener noreferrer">
                   WhatsApp {site.whatsappDisplay}
                 </a>
               </li>

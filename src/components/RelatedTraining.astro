@@ -1,5 +1,5 @@
 ---
-import { otherCourses } from "../content/courses";
+import { otherCourses, trainingOverviewPath } from "../content/courses";
 
 interface Props {
   excludeId: string;
@@ -11,7 +11,7 @@ const items = otherCourses(excludeId);
 
 <ul class="related-links">
   <li>
-    <a href="/hgv-training/">HGV training overview</a>
+    <a href={trainingOverviewPath}>HGV training overview</a>
     <span>Compare Category C, Category C+E and Driver CPC</span>
   </li>
   {
