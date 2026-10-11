@@ -28,6 +28,8 @@ Demonstration site and reusable template for the Webco Essential website package
 - About copy: `src/content/about.ts`
 - Trust points: `src/content/trust.ts`
 
+The floating "Like this website?" card is demonstration-only. Its package, price and Webco Cloud destination are in `site.purchase` in `src/config/site.ts`, and the component is `src/components/PurchaseCta.astro`. On a real client site set `purchase.enabled` to `false` or remove `<PurchaseCta />` from `src/layouts/BaseLayout.astro`.
+
 The phone, email and town in this repository are placeholders. Do not add a street address, a fee, a duration, a rating, an accreditation, or a real testimonial unless it belongs to the client.
 
 The live domain is `https://webco-essential.co.uk`, set as `site.url`. Canonical links and the sitemap are generated from that value.

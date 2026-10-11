@@ -1,0 +1,103 @@
+---
+import { site } from "../config/site";
+import { httpsUrl } from "../lib/links";
+
+const { enabled, packageName, price, url } = site.purchase;
+const href = httpsUrl(url);
+---
+
+{
+  enabled && href ? (
+    <div class="purchase-cta" data-purchase-cta data-state="collapsed">
+      <aside class="pc-card" id="purchase-cta-card" aria-label={`Get ${packageName} for your business`} tabindex="-1" hidden>
+        <button class="pc-close" type="button" aria-label="Collapse this panel">
+          <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false">
+            <path d="M5 5l10 10M15 5L5 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </button>
+        <p class="pc-title">Like this website?</p>
+        <p class="pc-text">
+          We can customise this design with your branding, courses, locations and business details.
+        </p>
+        <p class="pc-product">
+          <span>{packageName}</span>
+          <strong>{price}</strong>
+        </p>
+        <a class="button pc-link" href={href}>
+          Make this website yours <span aria-hidden="true">&rarr;</span>
+        </a>
+        <p class="pc-note">See this and the other available design on Webco Cloud.</p>
+      </aside>
+      <button class="pc-pill" type="button" aria-expanded="false" aria-controls="purchase-cta-card">
+        Make this yours
+      </button>
+    </div>
+    <noscript>
+      <style is:inline>
+        .purchase-cta .pc-card[hidden] {
+          display: block;
+        }
+        .purchase-cta .pc-pill,
+        .purchase-cta .pc-close {
+          display: none;
+        }
+      </style>
+    </noscript>
+    <script is:inline>
+      (() => {
+        const root = document.querySelector("[data-purchase-cta]");
+        if (!root) return;
+        const card = root.querySelector(".pc-card");
+        const pill = root.querySelector(".pc-pill");
+        const close = root.querySelector(".pc-close");
+        const key = "webco-essential-purchase-cta";
+        const wide = window.matchMedia("(min-width: 48rem)");
+
+        const stored = () => {
+          try {
+            const value = sessionStorage.getItem(key);
+            return value === "open" || value === "closed" ? value : null;
+          } catch (e) {
+            return null;
+          }
+        };
+        const remember = (value) => {
+          try {
+            sessionStorage.setItem(key, value);
+          } catch (e) {}
+        };
+
+        const render = (open) => {
+          root.dataset.state = open ? "expanded" : "collapsed";
+          card.hidden = !open;
+          pill.hidden = open;
+          pill.setAttribute("aria-expanded", String(open));
+        };
+        const toggle = (open) => {
+          root.dataset.animate = "";
+          render(open);
+          remember(open ? "open" : "closed");
+          (open ? card : pill).focus({ preventScroll: true });
+        };
+
+        const saved = stored();
+        render(saved ? saved === "open" : wide.matches);
+
+        pill.addEventListener("click", () => toggle(true));
+        close.addEventListener("click", () => toggle(false));
+        card.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") toggle(false);
+        });
+
+        // On small screens, step aside while a form field is being used.
+        const isField = (el) => el instanceof Element && el.matches("input, textarea, select");
+        document.addEventListener("focusin", (event) => {
+          if (isField(event.target)) root.dataset.field = "";
+        });
+        document.addEventListener("focusout", (event) => {
+          if (isField(event.target)) delete root.dataset.field;
+        });
+      })();
+    </script>
+  ) : null
+}

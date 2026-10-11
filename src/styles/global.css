@@ -2127,6 +2127,227 @@ textarea:user-invalid {
   text-underline-offset: 0.2em;
 }
 
+/* Webco Cloud purchase invitation (demonstration only).
+   Fixed bottom-right. A compact pill when collapsed, a small navy card when expanded. */
+
+.purchase-cta {
+  position: fixed;
+  right: max(0.75rem, env(safe-area-inset-right));
+  bottom: max(0.75rem, env(safe-area-inset-bottom));
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.pc-card[hidden],
+.pc-pill[hidden] {
+  display: none;
+}
+
+.pc-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding: 0.5rem 1.15rem 0.5rem 0.95rem;
+  border: 1.5px solid rgba(246, 178, 26, 0.7);
+  border-radius: 999px;
+  background: var(--navy);
+  color: var(--on-navy);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+
+.pc-pill::before {
+  content: "";
+  flex: none;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-top: 3px solid var(--amber);
+  border-right: 3px solid var(--amber);
+  transform: rotate(45deg) scale(0.9);
+}
+
+.pc-pill:hover {
+  border-color: var(--amber);
+  background: var(--navy-strong);
+}
+
+.pc-pill:focus-visible,
+.pc-close:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 0;
+  box-shadow: 0 0 0 6px var(--focus);
+}
+
+.pc-card {
+  position: relative;
+  width: min(21rem, calc(100vw - 1.5rem));
+  max-height: calc(100vh - 6rem);
+  max-height: calc(100dvh - 6rem);
+  overflow-y: auto;
+  padding: 1.5rem 1.25rem 1.1rem;
+  border-top: 4px solid var(--amber);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(18rem 10rem at 100% 0%, rgba(246, 178, 26, 0.16), transparent 65%),
+    linear-gradient(160deg, #0a1a28 0%, var(--navy) 60%, #123650 100%);
+  color: var(--on-navy);
+  box-shadow: var(--shadow-md);
+  overscroll-behavior: contain;
+}
+
+.pc-card:focus {
+  outline: none;
+}
+
+.pc-card :focus-visible {
+  outline-color: var(--amber);
+}
+
+.pc-card .pc-close:focus-visible {
+  outline-color: #fff;
+}
+
+.pc-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--on-navy-muted);
+  cursor: pointer;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+
+.pc-close:hover {
+  background: rgba(244, 247, 250, 0.12);
+  color: #fff;
+}
+
+.pc-title {
+  margin: 0;
+  padding-right: 2.5rem;
+  color: var(--on-navy);
+  font-family: var(--display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.pc-text {
+  margin: 0.55rem 0 0;
+  color: var(--on-navy-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.pc-product {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 1rem 0 0;
+  padding: 0.8rem 0;
+  border-block: 1px solid rgba(244, 247, 250, 0.16);
+  font-weight: 650;
+}
+
+.pc-product strong {
+  color: var(--amber);
+  font-family: var(--display);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.pc-card .pc-link {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.pc-card .pc-link:hover {
+  color: var(--navy-strong);
+}
+
+.pc-note {
+  margin: 0.7rem 0 0;
+  color: var(--on-navy-muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+@media (min-width: 48rem) {
+  .purchase-cta {
+    right: 1.25rem;
+    bottom: 1.25rem;
+  }
+
+  .pc-card {
+    padding: 1.6rem 1.5rem 1.2rem;
+  }
+}
+
+/* Small screens: step aside while a form field is in use, and leave room at the page end. */
+@media (max-width: 47.99rem) {
+  .purchase-cta[data-field] {
+    display: none;
+  }
+
+  body:has(.purchase-cta) .site-footer {
+    padding-bottom: calc(var(--space-xl) + 4rem);
+  }
+
+  .pc-title {
+    font-size: 1.5rem;
+  }
+
+  .pc-text {
+    margin-top: 0.4rem;
+    font-size: 0.9rem;
+  }
+
+  .pc-product {
+    margin-top: 0.75rem;
+    padding-block: 0.6rem;
+  }
+
+  .pc-card .pc-link {
+    margin-top: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .purchase-cta[data-animate] :is(.pc-card, .pc-pill):not([hidden]) {
+    animation: pc-in 200ms ease-out;
+  }
+}
+
+@keyframes pc-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}
+
+@media print {
+  .purchase-cta {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

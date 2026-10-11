@@ -23,6 +23,19 @@ export const site = {
   whatsappDisplay: "07700 900123",
   whatsappHref: "https://wa.me/447700900123",
   showWhatsApp: true,
+  /**
+   * Floating "make this website yours" card, shown on this demonstration only.
+   * `url` is the Webco Cloud HGV training-provider landing page, where visitors can
+   * compare Essential and Professional. No package is preselected and it is not checkout.
+   * Ordering and payment happen on Webco Cloud. Set `enabled` to false, or remove
+   * `<PurchaseCta />` from the layout, on a real client site.
+   */
+  purchase: {
+    enabled: true,
+    packageName: "Webco Essential",
+    price: "£595",
+    url: "https://webcocloud.net/web-design/hgv-driver-training/",
+  },
   /** POST URL for a small PHP form handler. Empty on this demonstration. */
   enquiryEndpoint: "",
   location: {
