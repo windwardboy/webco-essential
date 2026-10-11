@@ -14,7 +14,7 @@ const reviewsOn = httpsUrl(site.googleReviewsUrl) !== null;
 
 <BaseLayout
   title="Cookie policy"
-  description="Example cookie policy for the Webco Essential demonstration. This site does not set cookies or load analytics, so it does not show a consent banner."
+  description="Example cookie policy for the Webco Essential demonstration. This site does not set cookies. Visit counting does not use a cookie or a consent banner."
   crumbs={crumbs}
 >
   <PageHero
@@ -33,7 +33,7 @@ const reviewsOn = httpsUrl(site.googleReviewsUrl) !== null;
   </Section>
 
   <Section id="this-site" title="What this site sets" band={true} narrow={true}>
-    <p>This demonstration does not set cookies, and it does not use local storage or session storage.</p>
+    <p>This demonstration does not set cookies, and it does not use local storage.</p>
     <ul class="prose-list">
       <li>There is no account and no basket, so no cookie is needed to keep you signed in</li>
       <li>The enquiry form does not write what you type into storage. On this demonstration it does not send it either</li>
@@ -51,11 +51,17 @@ const reviewsOn = httpsUrl(site.googleReviewsUrl) !== null;
         </p>
       ) : (
         <p>
-          The project can hold a Google Analytics measurement id. It is empty here, so no analytics script is included
-          and no analytics cookies are set.
+          The project can hold a Google Analytics measurement id. It is empty here, so the Google tag is not included
+          and no Google Analytics cookies are set.
         </p>
       )
     }
+    <p>
+      Webco keeps daily totals of page views, estimated visits and clicks on the “Make this website yours” link. That
+      counting does not use a cookie or a persistent identifier. The browser may keep a short-lived session-storage flag
+      in the current tab so a visit is estimated only once while the tab stays open. Closing the tab, or clearing site
+      data, removes it. It is not used for advertising.
+    </p>
     {
       mapOn ? (
         <p>
@@ -88,9 +94,9 @@ const reviewsOn = httpsUrl(site.googleReviewsUrl) !== null;
       This website does not set those cookies for you.
     </p>
     <p>
-      A live provider who later switches on analytics, advertising or an embedded map needs a way for visitors to
-      accept or reject those tools before they run. This demonstration does not include that banner, because those
-      tools are not running.
+      A live provider who later switches on Google Analytics, advertising or an embedded map needs a way for visitors to
+      accept or reject those tools before they run. This demonstration does not include that banner. The visit counting
+      above does not set a cookie, and those other tools are not running.
     </p>
     <p>
       Also see the <a href={legalPages.privacy.href}>privacy policy</a> and the
